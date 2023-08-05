@@ -7,7 +7,7 @@ from transformers import RobertaTokenizer, T5ForConditionalGeneration
 app = Flask(__name__)
 CORS(app)
 
-model_path = 'model/experiment_5/final_model'
+model_path = 'model/final_model'
 assert os.path.exists(model_path), "Model path does not exist..."
 
 # Set up device
