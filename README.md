@@ -1,11 +1,3 @@
----
-license: apache-2.0
-tags:
-- codet5
-- code generation
-inference: false
----
-
 # Code generation -  Generate code examples from natural language queries by Transformer (CodeT5)
 
 
