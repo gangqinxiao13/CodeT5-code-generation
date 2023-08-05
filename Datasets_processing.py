@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 
+
 def conalamined_jsonl_to_dataframe(filename):
     data = []
     with open(filename, 'r') as file:
@@ -26,6 +27,7 @@ def conalamined_jsonl_to_dataframe(filename):
     df.to_csv('data/conala/conala-mined/conala-mined.csv', index=False)
     # df=pd.read_csv('conala/conala-mined/conala-mined.csv')
     # print(df.isnull().value_counts())
+
 
 def apimined_jsonl_to_dataframe(filename):
     data = []
