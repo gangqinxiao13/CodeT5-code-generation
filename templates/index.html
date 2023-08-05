@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset= "UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Code Generator</title>
+	<link rel="stylesheet" href="static/index.css">
+</head>
+<body>
+	<!--	header-->
+	<div class="header_image wrapper">
+		<h1>
+			<img src="static/transformer.png" width="180" height="100" alt="transformer">
+		</h1>
+		<div class="header_text_block">
+			<ul>
+				<h1>Python Code Generator</h1>
+			</ul>
+		</div>
+	</div>
+	<br>
+	<br>
+	<form method="POST">
+		<!--	select-->
+		<div class="select_block">
+		<span>Please select code source:</span>
+		<div class="select">
+			<select name="dropdown">
+				<option value="conala" selected>Stack Overflow</option>
+				<option value="api">Python API</option>
+				<option value="mbpp">Mostly Basic Python Programming</option>
+			</select>
+		</div>
+	</div>
+			<!--	input-->
+		<div class="input_block wrapper">
+		<span>English Enquiry</span>
+		<div class="input_box">
+			<textarea name="textarea">{{ input_textarea_content }}</textarea>
+		</div>
+	</div>
+			<!--	button-->
+		<div class="submit">
+		<div class="submit">
+			<button type="submit"><span>Submit</span></button>
+			<button type="reset"><span>Reset</span></button>
+		</div>
+	</div>
+	</form>
+	<!--	output-->
+	<div class="output_block">
+		<span>Python Code</span>
+		<div class="output_box">
+			<textarea>{{ textarea_content }}</textarea>
+		</div>
+	</div>
+
+</body>
+</html>
