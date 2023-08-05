@@ -1,0 +1,1138 @@
+,text,code,generation,bleu,1-gram bleu,2-gram bleu,3-gram bleu,4-gram bleu,precision,recall,F1,F3
+0,Write a function to find the length of the longest sub-sequence such that elements in the subsequences are consecutive integers.,"def find_longest_conseq_subseq(arr, n): 
+	ans = 0
+	count = 0
+	arr.sort() 
+	v = [] 
+	v.append(arr[0]) 
+	for i in range(1, n): 
+		if (arr[i] != arr[i - 1]): 
+			v.append(arr[i]) 
+	for i in range(len(v)): 
+		if (i > 0 and v[i] == v[i - 1] + 1): 
+			count += 1
+		else: 
+			count = 1
+		ans = max(ans, count) 
+	return ans ","def longest_subseq_len(arr): 
+	n = len(arr) 
+	dp = [[0 for i in range(n)] 
+			for j in range(n)] 
+	for i in range(n): 
+		for j in range(0, n): 
+			if (arr[i] > arr[j]+1): 
+				dp[i][j] = 1
+			else: 
+				dp[i][j] = dp[i - 1][j] + 1
+			",0.0470080676240696,0.3436446393954861,0.1409824161622507,0.0542596799045504,0.0018575385913269,0.8751453757286072,0.8511055707931519,0.8629581332206726,0.8534498810768127
+1,Write a python function to find the sum of even numbers at even positions.,"def sum_even_and_even_index(arr,n):  
+    i = 0
+    sum = 0
+    for i in range(0,n,2): 
+        if (arr[i] % 2 == 0) : 
+            sum += arr[i]  
+    return sum","def sum_of_even(n): 
+    return int(n) + (n % 2) ",0.0049472519623638,0.0507507312137297,0.0019333611890944,0.0022555880539435,0.0027067056647322,0.8487685918807983,0.7795758247375488,0.8127020597457886,0.7859832644462585
+2,Write a function to remove even characters in a string.,"def remove_even(str1):
+ str2 = ''
+ for i in range(1, len(str1) + 1):
+    if(i % 2 != 0):
+        str2 = str2 + str1[i - 1]
+ return str2","import re
+def remove_even(str1):
+ str2 = ''
+ for i in range(1, len(str1) + 1):
+    if (i % 2 == 0):
+        str2 = str2 + str1[i - 1]
+ return str2",0.7103664971248405,0.8275862068965517,0.75,0.6666666666666666,0.6153846153846154,0.9750950932502747,0.9934308528900146,0.9841776490211487,0.9915662407875061
+3,Write a function to calculate the sum of the positive integers of n+(n-2)+(n-4)... (until n-x =< 0).,"def sum_series(n):
+  if n < 1:
+    return 0
+  else:
+    return n + sum_series(n - 2)","def sum_of_positivenum(n): 
+	res = 0
+	for i in range(0, n): 
+		res = res + (i - 1) * (n - i) 
+	return res 
+def sum_of_positivenum(n): 
+	if (n == 0): 
+		return 0
+	if (n == 1): 
+		return 1
+	elif (n == 2): 
+		return 0
+	else: 
+		return sum_of_posit",0.0591680749976522,0.1739130434782608,0.0666666666666666,0.0454545454545454,0.0232558139534883,0.7798929214477539,0.8733606934547424,0.8239847421646118,0.863017737865448
+4,Write a python function to count the pairs with xor as an odd number.,"def find_Odd_Pair(A,N) : 
+    oddPair = 0
+    for i in range(0,N) :  
+        for j in range(i+1,N) :  
+            if ((A[i] ^ A[j]) % 2 != 0):  
+                oddPair+=1  
+    return oddPair  ","def find_even_Pair(A,N): 
+    evenPair = 0
+    for i in range(0,N): 
+        for j in range(i+1,N): 
+            if ((A[i] ^ A[j]) % 2 == 0): 
+                evenPair+=1
+    return evenPair; ",0.365210559422655,0.6251019726640885,0.4220637360187196,0.3209079645762165,0.2101183101391893,0.9818640947341919,0.9766318798065186,0.9792410135269165,0.9771525263786316
+5,Write a function to remove consecutive duplicates of a given list.,"from itertools import groupby
+def consecutive_duplicates(nums):
+    return [key for key, group in groupby(nums)] ","def remove_consecutive_duplicates(l):
+    return [i for i in l if i not in temp and not temp.append(i)]",0.0173957973756422,0.25,0.0066666666666666,0.0071428571428571,0.0076923076923076,0.7952383160591125,0.7987470626831055,0.796988844871521,0.7983947396278381
+6,Write a function to compute the value of ncr%p.,"def ncr_modp(n, r, p): 
+    C = [0 for i in range(r+1)]   
+    C[0] = 1
+    for i in range(1, n+1): 
+        for j in range(min(i, r), 0, -1): 
+            C[j] = (C[j] + C[j-1]) % p   
+    return C[r] ","def nCr_p(n, r, p): 
+	if (r > n- r): 
+		r = n - r 
+	C = [0 for i in range(r + 1)] 
+	C[0] = 1 
+	for i in range(1, n + 1): 
+		for j in range(min(i, r), 0, -1): 
+			C[j] = (C[j] + C[j-1]) % p 
+	return C[r] ",0.5287430133493595,0.6530612244897959,0.5625,0.4893617021276595,0.4347826086956521,0.9505348801612854,0.9670706391334534,0.958731472492218,0.9653911590576172
+7,Write a function to check whether the given key is present in the dictionary or not.,"def is_key_present(d,x):
+  if x in d:
+    return True
+  else:
+     return False","def check_key(dict, key):
+    if key in dict:
+        return True
+    else:
+        return False",0.356550620855925,0.6666666666666666,0.3636363636363636,0.3,0.2222222222222222,0.9514007568359375,0.9409083724021912,0.9461254477500916,0.9419471025466919
+8,Write a python function to convert the given string to lower case.,"def is_lower(string):
+  return (string.lower())","def is_lower(string):
+  return (string.lower())",1.0,1.0,1.0,1.0,1.0,0.9999997615814209,0.9999997615814209,0.9999997615814209,0.9999998211860657
+9,Write a function to return true if the password is valid.,"import re
+def pass_validity(p):
+ x = True
+ while x:  
+    if (len(p)<6 or len(p)>12):
+        break
+    elif not re.search(""[a-z]"",p):
+        break
+    elif not re.search(""[0-9]"",p):
+        break
+    elif not re.search(""[A-Z]"",p):
+        break
+    elif not re.search(""[$#@]"",p):
+        break
+    elif re.search(""\s"",p):
+        break
+    else:
+        return True
+        x=False
+        break
+
+ if x:
+    return False","def check_password(password):
+    if not any(password == password for password in ['a', 'b', 'c']):
+        return False
+    else:
+        return True",0.0199301393000057,0.1171542836069896,0.0465171420204223,0.0164748211322329,0.0017573142541048,0.7844480872154236,0.7265917658805847,0.7544122934341431,0.7319905161857605
+10,Write a function to remove all the words with k length in the given string.,"def remove_length(test_str, K):
+  temp = test_str.split()
+  res = [ele for ele in temp if len(ele) != K]
+  res = ' '.join(res)
+  return (res) ","def remove_words(text, k):
+  res = []
+  for word in text.split():
+    if len(word)!= k:
+      res.append(word)
+  return (res) ",0.0282459055397008,0.322824263213946,0.0860864701903856,0.0046117751887706,0.0049665271263684,0.9001140594482422,0.8822711706161499,0.8911033272743225,0.8840236067771912
+11,Write a function to add the given list to the given tuples.,"def add_lists(test_list, test_tup):
+  res = tuple(list(test_tup) + test_list)
+  return (res) ","def add_list(test_list, test_list):
+  test_list += test_list
+  return (test_list) ",0.0257250695748267,0.1947001957678512,0.0111257254724486,0.01298001305119,0.015576015661428,0.939234733581543,0.8765420913696289,0.9068061113357544,0.882432222366333
+12,Write a function to get the sum of a non-negative integer.,"def sum_digits(n):
+  if n == 0:
+    return 0
+  else:
+    return n % 10 + sum_digits(int(n / 10))","def get_sum(n):
+  sum = 0
+  for num in range(1, n + 1):
+    if num == 0:
+      sum = sum + num
+  return sum",0.024769802565621,0.3478260869565218,0.0454545454545454,0.0047619047619047,0.005,0.8307101726531982,0.8424057960510254,0.8365170955657959,0.8412213921546936
+13,Write a function to insert a given string at the beginning of all items in a list.,"def add_string(list,string):
+ add_string=[string.format(i) for i in  list]
+ return add_string","def insert_string(list,string):
+ list = [v for v in list for k in range(len(list))]
+ return list",0.01869300079996,0.2666666666666666,0.0071428571428571,0.0076923076923076,0.0083333333333333,0.8955264091491699,0.9022723436355591,0.8988867402076721,0.9015930891036987
+14,Write a function to find the similar elements from the given two tuple lists.,"def similar_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) & set(test_tup2))
+  return (res) ","def similar_elements(test_list1, test_list2):
+  res = set(test_list1) & set(test_list2)
+  return (res) ",0.0698534205658009,0.6,0.2222222222222222,0.0125,0.0142857142857142,0.962313175201416,0.9335795044898987,0.9477286338806152,0.9363754391670227
+15,Write a function to check for a number at the end of a string.,"import re
+def end_num(string):
+    text = re.compile(r"".*[0-9]$"")
+    if text.match(string):
+        return True
+    else:
+        return False","import re
+def num_At_End(text):
+    if re.search(r""\d+"", text):
+        return True
+    else:
+        return False",0.3696446397975284,0.6348612936679605,0.4617173044857894,0.3385926899562456,0.188107049975692,0.9240637421607971,0.8978922963142395,0.9107900261878967,0.9004425406455994
+16,Write a python function to get the position of rightmost set bit.,"import math
+def get_First_Set_Bit_Pos(n):
+     return math.log2(n&-n)+1","import math 
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    if (n == 0): 
+        return 1
+    return n ^ get_Pos_Of_Right_most_",0.0462025668100307,0.1818181818181818,0.0952380952380952,0.05,0.0052631578947368,0.8119736313819885,0.8974542617797852,0.852576732635498,0.8881047368049622
+17,Write a python function to find the maximum length of sublist.,"def Find_Max_Length(lst):  
+    maxLength = max(len(x) for x in lst )
+    return maxLength ","def Find_Max_Length(lst):  
+    maxList = max((len(x) for x in lst ) ) 
+    return maxList",0.3706866381788037,0.6923076923076923,0.5,0.2727272727272727,0.2,0.9841731786727905,0.984628438949585,0.9844008088111877,0.9845829606056213
+18,Write a function to zip the two given tuples.,"def zip_tuples(test_tup1, test_tup2):
+  res = []
+  for i, j in enumerate(test_tup1):
+    res.append((j, test_tup2[i % len(test_tup2)])) 
+  return (res) ","def zip_tuple(test_tup1, test_tup2):
+  res = tuple(tuple(a + b for a, b in zip(tup1, tup2))
+   for tup1, tup2 in zip(test_tup1, test_tup2))
+  return (res) ",0.0608059975103827,0.3636363636363636,0.1428571428571428,0.05,0.0052631578947368,0.8894408345222473,0.9020930528640747,0.8957222104072571,0.9008116126060486
+19,Write a function to perform the adjacent element concatenation in the given tuples.,"def concatenate_elements(test_tup):
+  res = tuple(i + j for i, j in zip(test_tup, test_tup[1:]))
+  return (res) ","def adjacent_elements(test_tup1, test_tup2):
+  res = tuple(ele1 + ele2 for ele1, ele2 in zip(test_tup1, test_tup2))
+  return (res) ",0.0437481143122464,0.5,0.1333333333333333,0.0071428571428571,0.0076923076923076,0.9004484415054321,0.9182736873626709,0.9092736840248108,0.916459321975708
+20,Write a function to find the n-th rectangular number.,"def find_rect_num(n):
+  return n*(n + 1) ","def nth_rect(n,d):
+	if (d >= 0):
+		return (n - 1) * (n - 1)
+	return (n - 2) * (n - 3) + (n - 4)",0.0102754745807671,0.1538461538461538,0.004,0.0041666666666666,0.0043478260869565,0.8126904368400574,0.8740231394767761,0.842241644859314,0.8674764037132263
+21,Write a function to count those characters which have vowels as their neighbors in the given string.,"def count_vowels(test_str):
+  res = 0
+  vow_list = ['a', 'e', 'i', 'o', 'u']
+  for idx in range(1, len(test_str) - 1):
+    if test_str[idx] not in vow_list and (test_str[idx - 1] in vow_list or test_str[idx + 1] in vow_list):
+      res += 1
+  if test_str[0] not in vow_list and test_str[1] in vow_list:
+    res += 1
+  if test_str[-1] not in vow_list and test_str[-2] in vow_list:
+    res += 1
+  return (res) ","from collections import Counter 
+def count_vowels(string, vowels):
+    count = 0
+    for c in string:
+        if c in vowels:
+            count += 1
+    return count",0.0098712209554349,0.0700184794621042,0.0219603412858417,0.0076686906077542,0.0008052125138141,0.8434450626373291,0.7552378177642822,0.7969080805778503,0.7632195353507996
+22,Write a python function to find the average of odd numbers till a given odd number.,"def average_Odd(n) : 
+    if (n%2==0) : 
+        return (""Invalid Input"") 
+        return -1 
+    sm =0
+    count =0
+    while (n>=1) : 
+        count=count+1
+        sm = sm + n 
+        n = n-2
+    return sm//count ","def get_Average(n): 
+    odd = 0
+    for i in range(0, n) : 
+        total = 0
+        for j in range(i + 1, n) : 
+            if (i % 2 == 0) : 
+                odd += i 
+            else : 
+                total = total + int(j / 2) 
+    return total / n ",0.0129316596530426,0.2222222222222222,0.0227272727272727,0.0023255813953488,0.0023809523809523,0.8129386305809021,0.8256596326828003,0.8192497491836548,0.8243696093559265
+23,Write a function to sort the given array by using shell sort.,"def shell_sort(my_list):
+    gap = len(my_list) // 2
+    while gap > 0:
+        for i in range(gap, len(my_list)):
+            current_item = my_list[i]
+            j = i
+            while j >= gap and my_list[j - gap] > current_item:
+                my_list[j] = my_list[j - gap]
+                j -= gap
+            my_list[j] = current_item
+        gap //= 2
+
+    return my_list","def shell_sort(arr):
+    arr_len = len(arr)
+    while arr_len > 1:
+        arr[0], arr[1] = arr[1], arr[0]
+        arr[1] = arr[0], arr[1]
+        arr[0] = arr[0]
+        arr[1] = arr[1]
+        arr[0] = arr[0]
+        nums = [int(i) for i in nums]
+        nums_sorted = [sorted(nums[",0.0254963667717611,0.2208393119570784,0.0412679522344035,0.0212235182919789,0.0021847739418213,0.741150975227356,0.7498051524162292,0.7454530000686646,0.7489306330680847
+24,Write a function to check whether the given month number contains 31 days or not.,"def check_monthnumb_number(monthnum2):
+  if(monthnum2==1 or monthnum2==3 or monthnum2==5 or monthnum2==7 or monthnum2==8 or monthnum2==10 or monthnum2==12):
+    return True
+  else:
+    return False","def check_monthnum_number(monthnum1):
+  if(monthnum1>2):
+    return False
+  else:
+    return True",0.0227012140142171,0.1673476201113223,0.0956272114921842,0.0037188360024738,0.0044626032029685,0.9322419762611389,0.8396350145339966,0.883518397808075,0.8480594754219055
+25,Write a function to check if a binary tree is balanced or not.,"class Node: 
+	def __init__(self, data): 
+		self.data = data 
+		self.left = None
+		self.right = None
+def get_height(root): 
+	if root is None: 
+		return 0
+	return max(get_height(root.left), get_height(root.right)) + 1
+def is_tree_balanced(root): 
+	if root is None: 
+		return True
+	lh = get_height(root.left) 
+	rh = get_height(root.right) 
+	if (abs(lh - rh) <= 1) and is_tree_balanced( 
+	root.left) is True and is_tree_balanced( root.right) is True: 
+		return True
+	return False","class Node: 
+	def __init__(self, data): 
+		self.data = data 
+	self.left = None
+		self.right = None
+def join(self, other): 
+	if other == 0: 
+		return True
+	if self.left == None or other.left == 0: 
+		return False
+	if self.right == None: 
+		return True
+	if self.right == 0: 
+		return False
+		if self.right ==",0.2747514552106233,0.4131527886129315,0.2921145739456406,0.2321393594882023,0.2033982959325201,0.8881276249885559,0.7969260215759277,0.8400587439537048,0.8051944971084595
+26,Write a function to check whether the given number is undulating or not.,"def is_undulating(n): 
+	if (len(n) <= 2): 
+		return False
+	for i in range(2, len(n)): 
+		if (n[i - 2] != n[i]): 
+			return False
+	return True","defundotify(num):
+  if num == 0:
+    return True
+  else:
+     return False",0.0181890300065921,0.1362658965170063,0.060562620674225,0.0034066474129251,0.0038933113290573,0.8337500691413879,0.7837634086608887,0.8079843521118164,0.7884907722473145
+27,Write a python function to find the sum of the three lowest positive numbers from a given list of numbers.,"def sum_three_smallest_nums(lst):
+	return sum(sorted([x for x in lst if x > 0])[:3])","def third_largest(nums):
+    return sum(map(sum,nums))",0.0129305120899358,0.0676676416183063,0.004511176107887,0.0067667641618306,0.0135335283236612,0.8786867260932922,0.7800509929656982,0.8264362215995789,0.7889067530632019
+28,"Write a function to extract specified number of elements from a given list, which follow each other continuously.","from itertools import groupby 
+def extract_elements(numbers, n):
+    result = [i for i, j in groupby(numbers) if len(list(j)) == n] 
+    return result","def extract_range(list1, n):
+    result = [i for i in list1 if i not in result]
+    return result",0.212763108631761,0.4649049194008813,0.2469807384317182,0.1580676725962996,0.1129054804259283,0.879105806350708,0.8196187019348145,0.848320722579956,0.8252025842666626
+29,Write a python function to split a string into characters.,"def split(word): 
+    return [char for char in word] ","def split(str1):
+    return (str1[0]) + str1[1:]",0.0347870055454239,0.238843770191263,0.0143306262114757,0.0179132827643447,0.0238843770191263,0.8223252892494202,0.8410552740097046,0.8315847516059875,0.8391440510749817
+30,"Write a function to find entringer number e(n, k).","def zigzag(n, k): 
+	if (n == 0 and k == 0): 
+		return 1
+	if (k == 0): 
+		return 0
+	return zigzag(n, k - 1) + zigzag(n - 1, n - k)","def find_enstringer_num(n, k): 
+	ans = 0
+	for i in range(1, n + 1): 
+		if (n == 0 or k == 0): 
+			ans = ans + (i - 1) * k 
+	return (ans if (ans >= 0 and
+				ans <= n) else -1) ",0.1089139511621934,0.4285714285714285,0.1707317073170731,0.075,0.0256410256410256,0.8242345452308655,0.8772724866867065,0.8499268889427185,0.871663510799408
+31,Write a python function to find the sum of non-repeated elements in a given array.,"def find_Sum(arr,n): 
+    arr.sort() 
+    sum = arr[0] 
+    for i in range(0,n-1): 
+        if (arr[i] != arr[i+1]): 
+            sum = sum + arr[i+1]   
+    return sum","def find_Sum(arr,n): 
+    return sum(1 for i in arr if arr.count(i) > 1)",0.0544665481025318,0.2755471557655919,0.1288272416566403,0.0472366552741014,0.0052485172526779,0.8710628747940063,0.8183544874191284,0.8438864946365356,0.8233365416526794
+32,Write a function to count total characters in a string.,"def count_charac(str1):
+ total = 0
+ for i in str1:
+    total = total + 1
+ return total","def count_char(str1):
+  count_chars = 0
+  for i in range(len(str1)):
+    count_chars += str1[i]
+  return count_chars",0.2506824449449871,0.4334389498750908,0.2667316614615943,0.2167194749375454,0.1576141635909421,0.8846850395202637,0.9055320620536804,0.894987165927887,0.9034032225608826
+33,Write a python function to find the volume of a triangular prism.,"def find_Volume(l,b,h) : 
+    return ((l * b * h) / 2) ","def volume_triangular(a,b,c): 
+    volume = (a * b * c) / (4 * a) 
+    return volume",0.0777963709094969,0.4,0.1428571428571428,0.0769230769230769,0.0083333333333333,0.8805882930755615,0.8973098993301392,0.8888704776763916,0.8956092000007629
+34,Write a function to find the index of the last occurrence of a given number in a sorted array.,"def find_last_occurrence(A, x):
+    (left, right) = (0, len(A) - 1)
+    result = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if x == A[mid]:
+            result = mid
+            left = mid + 1
+        elif x < A[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result ","def last_occurence_char(A, x):
+    (left, right) = (0, len(A) - 1)
+    result = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if x == A[mid]:
+            result = mid
+            right = mid - 1
+        elif x < A[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result",0.8715457484400297,0.9433962264150944,0.8846153846153846,0.8431372549019608,0.82,0.9797520637512207,0.9844334125518799,0.9820871353149414,0.9839633703231812
+35,Write a function to find the longest chain which can be formed from the given set of pairs.,"class Pair(object): 
+	def __init__(self, a, b): 
+		self.a = a 
+		self.b = b 
+def max_chain_length(arr, n): 
+	max = 0
+	mcl = [1 for i in range(n)] 
+	for i in range(1, n): 
+		for j in range(0, i): 
+			if (arr[i].a > arr[j].b and
+				mcl[i] < mcl[j] + 1): 
+				mcl[i] = mcl[j] + 1
+	for i in range(n): 
+		if (max < mcl[i]): 
+			max = mcl[i] 
+	return max","def longest_chain(pairs):
+    if len(pairs)==1:
+       return 1
+    else:
+       return max(longest_chain(pairs, key=len))",0.0001489863942819,0.001996637562764,5.546215452122464e-05,6.239492383637774e-05,7.130848438443171e-05,0.7559428811073303,0.680834949016571,0.7164257764816284,0.6876673698425293
+36,Write a python function to find the highest power of 2 that is less than or equal to n.,"def highest_Power_of_2(n): 
+    res = 0; 
+    for i in range(n, 0, -1): 
+        if ((i & (i - 1)) == 0): 
+            res = i; 
+            break; 
+    return res; ","def highest_Power_of_2(n): 
+    res = 0; 
+    for i in range(n, 0, -1):  
+        if ((i & (i - 1)) == 0): 
+            res = i; 
+            break;      
+    return res; ",1.0,1.0,1.0,1.0,1.0,0.997773289680481,0.997773289680481,0.997773289680481,0.997773289680481
+37,Write a python function to find sum of even index binomial coefficients.,"import math  
+def even_binomial_Coeff_Sum( n): 
+    return (1 << (n - 1)) ","def binomial_Coeff(n,k): 
+    C = [0] * (k + 1); 
+    C[0] = 1; # nC0 is 1 
+    for i in range(n): 
+        for j in range(i + 1,n): 
+            C[i] = C[j] + C[i - 1] 
+            if (i == 0 or j == 0): 
+                C[i] = 0; 
+            break; 
+    return C[n - 1]; ",0.0049284126306716,0.0612244897959183,0.0020833333333333,0.002127659574468,0.0021739130434782,0.7353918552398682,0.8236240148544312,0.7770111560821533,0.8138593435287476
+38,Write a python function to find smallest power of 2 greater than or equal to n.,"def next_Power_Of_2(n): 
+    count = 0; 
+    if (n and not(n & (n - 1))): 
+        return n   
+    while( n != 0): 
+        n >>= 1
+        count += 1
+    return 1 << count; ","def smallest_Power_of_2(n):
+    return (n*(n - 1)) / 2",0.0026480731526182,0.0271649088878442,0.0010348536719178,0.0012073292839041,0.001448795140685,0.8563311696052551,0.798101544380188,0.8261916041374207,0.8035656809806824
+39,Write a function to count the number of inversions in the given array.,"def get_inv_count(arr, n): 
+	inv_count = 0
+	for i in range(n): 
+		for j in range(i + 1, n): 
+			if (arr[i] > arr[j]): 
+				inv_count += 1
+	return inv_count ","def get_Inv_Count(arr,n):
+    inv_count = 0
+    for i in range(n):
+        if (arr[i] < arr[i - 1]):
+            inv_count += 1
+    if (inv_count == 0):
+        return 0
+    return inv_count / inv_count ",0.2925612730731506,0.5357142857142857,0.3703703703703703,0.2307692307692307,0.1599999999999999,0.9245486855506897,0.9394011497497559,0.9319157600402832,0.9378945231437683
+40,Write a python function to accept the strings which contains all vowels.,"def check(string): 
+  if len(set(string).intersection(""AEIOUaeiou""))>=5: 
+    return ('accepted') 
+  else: 
+    return (""not accepted"") ","import re
+def vowels(text):
+    patterns = 'aeiouAEIOU'
+    if re.search(patterns,  text):
+        return ('Found a match!')
+    else:
+        return ('Not matched!')",0.028724953480912,0.2777777777777778,0.0588235294117647,0.00625,0.0066666666666666,0.8349279761314392,0.852716326713562,0.8437284827232361,0.8509033918380737
+41,Write a function to split a string at uppercase letters.,"import re
+def split_upperstring(text):
+ return (re.findall('[A-Z][^A-Z]*', text))","import re
+def split_list(text):
+ return (re.findall('[A-Z][^A-Z]*', text))",0.274941620352113,0.8571428571428571,0.6666666666666666,0.4,0.025,0.9879979491233826,0.9758183360099792,0.9818703532218933,0.9770227074623108
+42,Write a function to count the frequency of consecutive duplicate elements in a given list of numbers.,"def count_duplic(lists):
+    element = []
+    frequency = []
+    if not lists:
+        return element
+    running_count = 1
+    for i in range(len(lists)-1):
+        if lists[i] == lists[i+1]:
+            running_count += 1
+        else:
+            frequency.append(running_count)
+            element.append(lists[i])
+            running_count = 1
+    frequency.append(running_count)
+    element.append(lists[i+1])
+    return element,frequency
+","from collections import Counter 
+def frequency_consecutive_duplicates(nums):
+    temp = Counter(nums) 
+    res = 1
+    for a, b in zip(nums[:-1], nums[1:]):
+        if a!= b:
+            res = temp + 1
+    return (res) ",0.0325689723883544,0.2589687221150471,0.0537120312534912,0.0278889393046973,0.0029004496876885,0.7832679748535156,0.7631457448005676,0.7730759978294373,0.7651112675666809
+43,Write a function to find the largest palindromic number in the given array.,"def is_palindrome(n) : 
+	divisor = 1
+	while (n / divisor >= 10) : 
+		divisor *= 10
+	while (n != 0) : 
+		leading = n // divisor 
+		trailing = n % 10
+		if (leading != trailing) : 
+			return False
+		n = (n % divisor) // 10
+		divisor = divisor // 100
+	return True
+def largest_palindrome(A, n) : 
+	A.sort() 
+	for i in range(n - 1, -1, -1) : 
+		if (is_palindrome(A[i])) : 
+			return A[i] 
+	return -1","def largest_palindic(x):
+  return max(x[::-1] for x in range(x.size))",1.162907072882203e-05,0.0001480223650284,4.2292104293836506e-06,4.934078834280924e-06,5.920894601137108e-06,0.7732764482498169,0.6969378590583801,0.7331252694129944,0.7038866281509399
+44,"Write a function to find out, if the given number is abundant.","def is_abundant(n):
+    fctrsum = sum([fctr for fctr in range(1, n) if n % fctr == 0])
+    return fctrsum > n","import math 
+def get_sum(n): 
+	sum = 0
+	i = 1
+	while i <= (math.sqrt(n)): 
+		if n%i == 0: 
+			if n/i == i : 
+				sum = sum + i 
+			else: 
+				sum = sum + i 
+				sum = sum + (n / i ) 
+		i = i + 1
+	sum = sum - n 
+	return sum
+def check_abundant(n",0.0051077863845984,0.1071428571428571,0.0018181818181818,0.0018518518518518,0.0018867924528301,0.7599436044692993,0.7564501166343689,0.7581928968429565,0.7567980289459229
+45,Write a function to move all zeroes to the end of the given array.,"def re_order(A):
+    k = 0
+    for i in A:
+        if i:
+            A[k] = i
+            k = k + 1
+    for i in range(k, len(A)):
+        A[i] = 0
+    return A","def move_zero(arr, n):
+    a = [0 for i in range(n)]
+    x = [ i for i in range(n)]
+    if x == 0:
+        a[0] = 0
+    x[1] = 1
+    for i in range(n):
+        if x == 0:
+            x.append(i)
+    return (x)",0.1099031182773212,0.4102564102564102,0.1578947368421052,0.081081081081081,0.0277777777777777,0.8394840955734253,0.8497641682624817,0.8445928692817688,0.8487248420715332
+46,Write a function to extract the maximum numeric value from a string by using regex.,"import re 
+def extract_max(input): 
+	numbers = re.findall('\d+',input) 
+	numbers = map(int,numbers) 
+	return max(numbers)","import re
+def extract_num(text):
+  return (re.findall(r""\b\d+"", text))",0.0859987880668714,0.2797380911754017,0.163180553185651,0.0979083319113906,0.0122385414889238,0.9044128656387329,0.845055341720581,0.8737271428108215,0.8506380915641785
+47,Write a python function to find the next perfect square greater than a given number.,"import math  
+def next_Perfect_Square(N): 
+    nextN = math.floor(math.sqrt(N)) + 1
+    return nextN * nextN ","def next_greater_than_num(n):
+    for i in range(1, n):
+        if (i % 2 == 0):
+            return i;
+    return False",0.0136791921231218,0.1176470588235294,0.00625,0.0066666666666666,0.0071428571428571,0.7704402208328247,0.7754482626914978,0.7729361653327942,0.774944543838501
+48,Write a function to check whether a specified list is sorted or not.,"def issort_list(list1):
+    result = all(list1[i] <= list1[i+1] for i in range(len(list1)-1))
+    return result","def is_sorted(l, d):
+    if (d in l):
+        return False
+    else:
+        return True",0.0206245744615605,0.2300111036573308,0.0083640401329938,0.0092004441462932,0.0102227157181035,0.8115549087524414,0.7404339909553528,0.7743648886680603,0.7469801902770996
+49,Write a python function to find lcm of two positive integers.,"def lcm(x, y):
+   if x > y:
+       z = x
+   else:
+       z = y
+   while(True):
+       if((z % x == 0) and (z % y == 0)):
+           lcm = z
+           break
+       z += 1
+   return lcm","def find_lcm(x, y): 
+    if x % y == 0: 
+        return y 
+    y = int(y / 2) 
+    lcm = int(x/ y) 
+    for k in range(int(lcm) + 1, -1, -1): 
+        if x % k == 0 and y % k == 0: 
+            lcm = lcm + 1
+        else: 
+            lcm = n * x 
+    return lcm ",0.0435156311373686,0.3962264150943396,0.1153846153846154,0.0392156862745098,0.002,0.8387501239776611,0.8760257959365845,0.8569827675819397,0.8721497654914856
+50,Write a function to extract values between quotation marks of a string.,"import re
+def extract_values(text):
+ return (re.findall(r'""(.*?)""', text))","import re
+def extract_quotation(text):
+ return (re.findall(r'""(.*?)""', text))",0.274941620352113,0.8571428571428571,0.6666666666666666,0.4,0.025,0.9699456095695496,0.9824257493019104,0.9761457443237305,0.9811633229255676
+51,Write a function to find the greatest common divisor (gcd) of two integers by using recursion.,"def recur_gcd(a, b):
+	low = min(a, b)
+	high = max(a, b)
+	if low == 0:
+		return high
+	elif low == 1:
+		return 1
+	else:
+		return recur_gcd(low, high%low)","def great_common_div(x, y):
+  if x==y:
+    return y
+  else:
+    return (gcd(x, y))",0.0117046960707828,0.1061393086776879,0.0233506479090913,0.0025945164343434,0.0029188309886364,0.8660567998886108,0.8197940587997437,0.8422906994819641,0.8241967558860779
+52,Write a python function to count the number of integral co-ordinates that lie inside a square.,"def count_Intgral_Points(x1,y1,x2,y2): 
+    return ((y2 - y1 - 1) * (x2 - x1 - 1)) ","def count_Average(n): 
+    res = 0
+    for i in range(1, n + 1): 
+        j = 2 * i + 1
+        if (i * i <= j * j): 
+            res = res * (1 - i) * math.pi * r * (1 - j) 
+        else: 
+            res = res * (1 - i) * math.pi * r * (1 - j)) 
+    return res ",0.0049453608018383,0.1166666666666666,0.0016949152542372,0.0017241379310344,0.0017543859649122,0.7467513084411621,0.7543481588363647,0.7505305409431458,0.7535815238952637
+53,Write a function to convert rgb color to hsv color.,"def rgb_to_hsv(r, g, b):
+    r, g, b = r/255.0, g/255.0, b/255.0
+    mx = max(r, g, b)
+    mn = min(r, g, b)
+    df = mx-mn
+    if mx == mn:
+        h = 0
+    elif mx == r:
+        h = (60 * ((g-b)/df) + 360) % 360
+    elif mx == g:
+        h = (60 * ((b-r)/df) + 120) % 360
+    elif mx == b:
+        h = (60 * ((r-g)/df) + 240) % 360
+    if mx == 0:
+        s = 0
+    else:
+        s = (df/mx)*100
+    v = mx*100
+    return h, s, v","def rgb_to_hsv(rgb):
+    return (r,g,b)",7.244702707302492e-11,3.791280213955953e-10,2.527520142637302e-11,3.791280213955954e-11,7.582560427911908e-11,0.8472608327865601,0.6005632877349854,0.7028944492340088,0.618574321269989
+54,Write a function to count the number of elements in a list which are within a specific range.,"def count_range_in_list(li, min, max):
+	ctr = 0
+	for x in li:
+		if min <= x <= max:
+			ctr += 1
+	return ctr","def count_range(list1, r):
+    count = 0
+    for x in list1:
+        if (x < r):
+            count += 1
+    return count",0.2288699337434303,0.4494419292755447,0.284646555207845,0.2009269801467141,0.1067424582029419,0.9136123657226562,0.8969113230705261,0.905184805393219,0.8985539078712463
+55,Write a python function to find the sum of the largest and smallest value in a given array.,"def big_sum(nums):
+      sum= max(nums)+min(nums)
+      return sum","def largest_Sum(nums): 
+    return max(nums) + min(nums)",0.0485491771707323,0.3333333333333333,0.02,0.025,0.0333333333333333,0.9545513987541199,0.9317620992660522,0.9430190920829773,0.9339919686317444
+56,Write a function to multiply two lists using map and lambda function.,"def mul_list(nums1,nums2):
+  result = map(lambda x, y: x * y, nums1, nums2)
+  return list(result)","def multiply_list(nums1,nums2):
+  result = map(lambda x, y: x + y, nums1, nums2)
+  return list(result)",0.6298129992394241,0.8571428571428571,0.6923076923076923,0.5833333333333334,0.4545454545454545,0.9909216165542603,0.9909216165542603,0.9909216165542603,0.9909214973449707
+57,Write a python function to find minimum sum of factors of a given number.,"def find_Min_Sum(num): 
+    sum = 0
+    i = 2
+    while(i * i <= num): 
+        while(num % i == 0): 
+            sum += i 
+            num /= i 
+        i += 1
+    sum += num 
+    return sum","import math 
+def min_Sum(n): 
+    res = 1
+    for i in range(2,n + 1): 
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        while (n % i == 0): 
+            count+=1 
+            n = n // i 
+            curr_term *= i 
+            curr_sum += curr_term    
+        res *= curr_sum  
+    if (n >= 2): 
+        res *= (1 + n) ",0.0632518793403012,0.25,0.0784313725490195,0.04,0.0204081632653061,0.7839913368225098,0.8750837445259094,0.8270368576049805,0.8650328516960144
+58,Write a function to find the nth octagonal number.,"def is_octagonal(n): 
+	return 3 * n * n - 2 * n ","def octagonal_num(n): 
+	return n + 1",0.0197656093009439,0.1839397205857211,0.0073575888234288,0.009196986029286,0.012262648039048,0.8742790818214417,0.822865903377533,0.8477937579154968,0.8277335166931152
+59,Write a function to sort counter by value.,"from collections import Counter
+def sort_counter(dict1):
+ x = Counter(dict1)
+ sort_counter=x.most_common()
+ return sort_counter","def sort_by_value(x):
+    y = x[0]
+    return sorted(y, key=y[1])",0.0221720450479346,0.2274489973922375,0.0086647237101804,0.0101088443285438,0.0121306131942526,0.838675856590271,0.8072118759155273,0.8226431608200073,0.8102515935897827
+60,"Write a function to assign with each element, its pair elements from other similar pairs in the given tuple.","def assign_elements(test_list):
+  res = dict()
+  for key, val in test_list:
+    res.setdefault(val, [])
+    res.setdefault(key, []).append(val)
+  return (res) ","def assign_pair(test_list):
+  res = tuple(list(set(test_list)))
+  return (res) ",0.0288769658254601,0.1974664618782603,0.0921510155431881,0.0055290609325912,0.0069113261657391,0.8970376253128052,0.8210452795028687,0.85736083984375,0.8280601501464844
+61,Write a function to list out the list of given strings individually using map function.,"def listify_list(list1):
+  result = list(map(list,list1)) 
+  return result ","def func_list(input_list):
+    result = map(lambda x:x ** 2, input_list)
+    return result",0.059609942732681,0.4545454545454545,0.2,0.0111111111111111,0.0125,0.844237208366394,0.8866873979568481,0.8649417757987976,0.8822512626647949
+62,Write a function to put spaces between words starting with capital letters in a given string by using regex.,"import re
+def capital_words_spaces(str1):
+  return re.sub(r""(\w)([A-Z])"", r""\1 \2"", str1)","import re
+def capitalize_spaces(text):
+  return (re.sub('[A-Z]','', text))",0.1320135584022327,0.4294155960430205,0.2504924310250953,0.1502954586150572,0.0187869323268821,0.9475367069244385,0.8715509176254272,0.9079567790031433,0.8785966634750366
+63,Write a python function to count integers from a given list.,"def count_integer(list1):
+    ctr = 0
+    for i in list1:
+        if isinstance(i, int):
+            ctr = ctr + 1
+    return ctr","def count_int(list1):
+    count = 0
+    for i in list1:
+        if i == 0:
+            count = count + 1
+    return count ",0.3751840463233443,0.6,0.4210526315789473,0.3333333333333333,0.2352941176470588,0.9464852809906006,0.9137148857116699,0.929811418056488,0.9168894290924072
+64,Write a function to find the first duplicate element in a given array of integers.,"def find_first_duplicate(nums):
+    num_set = set()
+    no_duplicate = -1
+
+    for i in range(len(nums)):
+
+        if nums[i] in num_set:
+            return nums[i]
+        else:
+            num_set.add(nums[i])
+
+    return no_duplicate","def first_duplicate(nums):
+    nums_set = set(nums)    
+    result = next((x for x in nums if nums.count(x) == 1),-1) 
+    return result",0.0140695905243329,0.311397878912092,0.0047102200171576,0.00500460876823,0.0053382493527787,0.8622119426727295,0.8563600182533264,0.8592760562896729,0.8569416403770447
+65,Write a function to find out the maximum sum such that no two chosen numbers are adjacent for the given rectangular grid of dimension 2 x n.,"def max_sum_rectangular_grid(grid, n) : 
+	incl = max(grid[0][0], grid[1][0]) 
+	excl = 0
+	for i in range(1, n) : 
+		excl_new = max(excl, incl) 
+		incl = excl + max(grid[0][i], grid[1][i]) 
+		excl = excl_new 
+	return max(excl, incl)","def max_sum_subset(n, K): 
+	dp = [0] * (N + 1) 
+	dp[0] = 0
+	for i in range(1, N): 
+		dp[i] = dp[i - 1] 
+		if (i < K): 
+			dp[i] = max(dp[i - 1], dp[i - 2]) 
+			if (i == 0 or dp[i - 1] <= dp[i - 2]): 
+				dp[i] =",0.1090837030237408,0.2448979591836734,0.1041666666666666,0.0851063829787233,0.0652173913043478,0.7861026525497437,0.7670434713363647,0.7764561176300049,0.7689077258110046
+66,Write a python function to get the first element of each sublist.,"def Extract(lst): 
+    return [item[0] for item in lst] ","def Extract(lst): 
+    return [item[0] for item in lst] ",1.0,1.0,1.0,1.0,1.0,1.0000001192092896,1.0000001192092896,1.0000001192092896,1.0000001192092896
+67,Write a function to remove all elements from a given list present in another list.,"def remove_elements(list1, list2):
+    result = [x for x in list1 if x not in list2]
+    return result","def remove_list(list1, list2):
+    result = [i for i in list1 if i not in list2]
+    return result",0.3673341329152363,0.7647058823529411,0.5,0.3333333333333333,0.1428571428571428,0.9731625914573669,0.9605398774147034,0.9668100476264954,0.9617874026298523
+68,Write a function to filter a dictionary based on values.,"def dict_filter(dict,n):
+ result = {key:value for (key, value) in dict.items() if value >=n}
+ return result","def filter_dict(d, filtervalue):
+  res = {key: value for key, value in d.items() if value in filter_value}
+  return (res)
+",0.0312457780115705,0.3888888888888889,0.0588235294117647,0.00625,0.0066666666666666,0.9089333415031433,0.9243910312652588,0.9165970087051392,0.9228217005729675
+69,Write a python function to check whether a string has atleast one letter and one number.,"def check_String(str): 
+    flag_l = False
+    flag_n = False
+    for i in str: 
+        if i.isalpha(): 
+            flag_l = True  
+        if i.isdigit(): 
+            flag_n = True
+    return flag_l and flag_n ","def check_One_Digit(string): 
+    return re.search(r""[a-z]"", string) 
+    else: 
+        return (""Not matched"") ",0.0043129858253364,0.0336088354867768,0.0018904969961311,0.0021605679955785,0.0025206626615082,0.7744146585464478,0.7611446380615234,0.7677222490310669,0.7624511122703552
+70,Write a function to find out the minimum no of swaps required for bracket balancing in the given string.,"def swap_count(s):
+	chars = s
+	count_left = 0
+	count_right = 0
+	swap = 0
+	imbalance = 0; 
+	for i in range(len(chars)):
+		if chars[i] == '[':
+			count_left += 1
+			if imbalance > 0:
+				swap += imbalance
+				imbalance -= 1
+		elif chars[i] == ']':
+			count_right += 1
+			imbalance = (count_right - count_left) 
+	return swap","def min_Swaps(str1): 
+	coff = 0
+	if (len(str1) == 0): 
+		return (""No pairs exists"") 
+	elif (str1[0] == '{' and str1[1] == '['): 
+		coff += 1
+		elif (str1[0] == '}'): 
+		coff += 1
+	else: 
+		return (""Not matched"") ",0.0152955308879872,0.2109454525990396,0.0723832435388861,0.0018644168790319,0.0019226799065016,0.7898786664009094,0.7796134948730469,0.784712553024292,0.780627965927124
+71,Write a function to find maximum run of uppercase characters in the given string.,"def max_run_uppercase(test_str):
+  cnt = 0
+  res = 0
+  for idx in range(0, len(test_str)):
+    if test_str[idx].isupper():
+      cnt += 1
+    else:
+      res = cnt
+      cnt = 0
+  if test_str[len(test_str) - 1].isupper():
+    res = cnt
+  return (res)","def max_uppercase(str1):
+    upper_chars = ''
+    max_run = -1
+    for i in range(len(str1)):
+        if str1[i] >= upper_chars:
+            upper_chars += str1[i].upper()
+        else:
+            upper_chars += str1[i].lower()
+        max_run = max(upper_chars, key=lambda x: x[1])
+    return (upper_chars[0] + str1[1]) %",0.0097358498570249,0.2941176470588235,0.003030303030303,0.003125,0.0032258064516129,0.7984922528266907,0.8095362186431885,0.80397629737854,0.8084180355072021
+72,Write a python function to check whether the value exists in a sequence or not.,"def overlapping(list1,list2):  
+    c=0
+    d=0
+    for i in list1: 
+        c+=1
+    for i in list2: 
+        d+=1
+    for i in range(0,c): 
+        for j in range(0,d): 
+            if(list1[i]==list2[j]): 
+                return 1
+    return 0","def contains_seq(seq,x): 
+    if x in seq: 
+        return True
+    else: 
+        return False",0.0062249037088232,0.0849114469421503,0.0023350647909091,0.0025945164343434,0.0029188309886364,0.7993772029876709,0.7295745611190796,0.7628825306892395,0.7360013723373413
+73,Write a function to search an element in the given array by using binary search.,"def binary_search(item_list,item):
+	first = 0
+	last = len(item_list)-1
+	found = False
+	while( first<=last and not found):
+		mid = (first + last)//2
+		if item_list[mid] == item :
+			found = True
+		else:
+			if item < item_list[mid]:
+				last = mid - 1
+			else:
+				first = mid + 1	
+	return found","def binary_search(arr, key):
+    binary_search = [key for key in range(arr.count(key)) if key in key]
+    if binary_search:
+        return key
+    else:
+        return -1",0.0041449665822167,0.0828388432190627,0.0014496797563335,0.0015259786908774,0.0016107552848151,0.7895389199256897,0.756506621837616,0.7726698517799377,0.7596849799156189
+74,Write a python function to find number of elements with odd factors in a given range.,"def count_Odd_Squares(n,m): 
+    return int(m**0.5) - int((n-1)**0.5) ","import math 
+def count_of_odd_Factors(n): 
+    res = 1
+    for i in range(2, (int)(math.sqrt(n)) + 1) : 
+        count = 0
+        curr_sum = 1
+        curr_term = 1
+        while (n % i == 0) : 
+            count+=1
+            n = n // i 
+            curr_term *= i 
+            curr_sum += curr_term    
+        res = n // curr_sum  
+    if",0.0037447837904003,0.0204081632653061,0.0020833333333333,0.002127659574468,0.0021739130434782,0.6812955141067505,0.7361271381378174,0.7076507210731506,0.7302500009536743
+75,Write a python function to find the sum of fourth power of first n odd natural numbers.,"def odd_Num_Sum(n) : 
+    j = 0
+    sm = 0
+    for i in range(1,n + 1) : 
+        j = (2*i-1) 
+        sm = sm + (j*j*j*j)   
+    return sm ","def even_Power_Sum(n): 
+    sum = 0; 
+    for i in range(1,n + 1): 
+        j = 2*i; 
+        sum = sum + (j*j*j*j); 
+    return sum; ",0.176341011666461,0.4503586444258919,0.1970319069363277,0.1244412043808385,0.0875697364161456,0.966887891292572,0.9536809325218201,0.960239052772522,0.9549853801727295
+76,Write a python function to find the maximum of two numbers.,"def maximum(a,b):   
+    if a >= b: 
+        return a 
+    else: 
+        return b ","def max_of_two( x, y ): 
+    if x > y: 
+        return x 
+    return y",0.0219728138749971,0.3076923076923076,0.0083333333333333,0.009090909090909,0.01,0.885424792766571,0.9140337109565735,0.8995018601417542,0.9110899567604065
+77,Write a function to sort a list in a dictionary.,"def sorted_dict(dict1):
+  sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+  return sorted_dict","def sort_list(my_dict):
+    result = [i for i in sorted(my_dict.values())]
+    return result",0.0235016618183613,0.378978599125082,0.0083375291807518,0.0092639213119464,0.0104219114759397,0.8786606192588806,0.8812204003334045,0.8799386620521545,0.8809636235237122
+78,Write a python function to reverse only the vowels of a given string.,"def reverse_vowels(str1):
+	vowels = """"
+	for char in str1:
+		if char in ""aeiouAEIOU"":
+			vowels += char
+	result_string = """"
+	for char in str1:
+		if char in ""aeiouAEIOU"":
+			result_string += vowels[-1]
+			vowels = vowels[:-1]
+		else:
+			result_string += char
+	return result_string","def reverse_Vow(string):
+        return (x for x in string if x not in vowels)",0.0032909366927013,0.0624624384168981,0.0011277940269717,0.0012303207566964,0.0013533528323661,0.8243411183357239,0.7385220527648926,0.7790753841400146,0.7462913393974304
+79,Write a python function to find the average of even numbers till a given even number.,"def average_Even(n) : 
+    if (n% 2!= 0) : 
+        return (""Invalid Input"") 
+        return -1  
+    sm = 0
+    count = 0
+    while (n>= 2) : 
+        count = count+1
+        sm = sm+n 
+        n = n-2
+    return sm // count ","def find_Average(n): 
+    return (n * (n + 1) / 2) ",0.0020630370457229,0.0222820734643001,0.0008252619801592,0.0009284197276791,0.0010610511173476,0.8213273286819458,0.7537754774093628,0.786102831363678,0.7600264549255371
+80,Write a function to check if a nested list is a subset of another nested list.,"def check_subset(list1,list2): 
+    return all(map(list1.__contains__,list2)) ","def check_subset_list(list1, list2): 
+    l1, l2 = list1[0], list2[0] 
+    exist = True
+    for i in list2: 
+        if i not in list1: 
+            exist = False
+    return exist ",0.0090091134743073,0.0799999999999999,0.0041666666666666,0.0043478260869565,0.0045454545454545,0.8266181349754333,0.8815767765045166,0.8532133102416992,0.875754177570343
+81,Write a function to find the next smallest palindrome of a specified number.,"import sys
+def next_smallest_palindrome(num):
+    numstr = str(num)
+    for i in range(num+1,sys.maxsize):
+        if str(i) == str(i)[::-1]:
+            return i","def next_palindrome(num):
+    for x in range(num-1,0,-1):
+        if str(x) == str(x)[::-1]:
+            return x",0.017574285132979,0.3296203151002218,0.0059930966381858,0.0065924063020044,0.007324895891116,0.9247995018959045,0.8842533826828003,0.9040719866752625,0.8881473541259766
+82,Write a function to find the volume of a cuboid.,"def volume_cuboid(l,w,h):
+  volume=l*w*h
+  return volume","def volume_cuboid(l,r):
+  volume = (1.0/3) * math.pi * r * r * h
+  return volume",0.0309345882943137,0.2,0.0714285714285714,0.0076923076923076,0.0083333333333333,0.8595583438873291,0.9273567199707031,0.8921713829040527,0.9200993776321411
+83,Write a function to get the frequency of the elements in a list.,"import collections
+def freq_count(list1):
+  freq_count= collections.Counter(list1)
+  return freq_count","from collections import defaultdict
+def freq_element(test_tup):
+  res = defaultdict(int)
+  for ele in test_tup:
+    res[ele] += 1
+  return (str(dict(res))) ",0.015276780223747,0.2222222222222222,0.0058823529411764,0.00625,0.0066666666666666,0.7799289226531982,0.8447214365005493,0.8110331296920776,0.8377617001533508
+84,Write a function to remove uppercase substrings from a given string by using regex.,"import re
+def remove_uppercase(str1):
+  remove_upper = lambda text: re.sub('[A-Z]', '', text)
+  result =  remove_upper(str1)
+  return (result)","import re
+def remove_uppercase(str1):
+  remove_upper = lambda text: re.sub('[A-Z]', '', text)
+  result =  remove_upper(str1)
+  return (result)",1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0
+85,Write a python function to count unset bits of a given number.,"def count_unset_bits(n): 
+    count = 0
+    x = 1
+    while(x < n + 1): 
+        if ((x & n) == 0): 
+            count += 1
+        x = x << 1
+    return count  ","def count_Unset_Bits(n) : 
+    cnt = 0;  
+    for i in range(1,n + 1) : 
+        temp = i;  
+        while (temp) :  
+            if (temp % 2 == 0) : 
+                cnt += 1;  
+            temp = temp // 2;  
+    return cnt;  ",0.008932433195406,0.25,0.0028571428571428,0.0029411764705882,0.003030303030303,0.849602222442627,0.8878391981124878,0.8682999014854431,0.8838613629341125
+86,Write a function to decode a run-length encoded given list.,"def decode_list(alist):
+    def aux(g):
+        if isinstance(g, list):
+            return [(g[1], range(g[0]))]
+        else:
+            return [(g, [0])]
+    return [x for g in alist for x, R in aux(g) for i in R]","def decode_list(list1):
+    result = []
+    for i in list1:
+        if len(i)!= len(list1):
+            result.append(i[0])
+        else:
+            result.append(i[0])
+    return result",0.03473554749037,0.2032770305131713,0.0617090985486413,0.032911519225942,0.0035262342027795,0.8405933976173401,0.807295024394989,0.8236078023910522,0.8105056881904602
+87,Write a python function to convert decimal number to octal number.,"def decimal_to_Octal(deciNum):
+    octalNum = 0
+    countval = 1;
+    dNo = deciNum;
+    while (deciNum!= 0):
+        remainder= deciNum % 8;
+        octalNum+= remainder*countval;
+        countval= countval*10;
+        deciNum //= 8; 
+    return (octalNum)","def octal_To_Decimal(n):  
+    num = n; 
+    dec_value = 0; 
+    base = 1; 
+    temp = num; 
+    while (temp): 
+        last_digit = temp % 10; 
+        temp = int(temp / 10); 
+        dec_value += last_digit*base; 
+        base = base * 8; 
+    return dec_value; ",0.0188897963468497,0.25,0.0571428571428571,0.0029411764705882,0.003030303030303,0.8484925031661987,0.8328689336776733,0.8406081199645996,0.8344054222106934
+88,Write a function to find n’th smart number.,"MAX = 3000 
+def smartNumber(n): 
+	primes = [0] * MAX 
+	result = [] 
+	for i in range(2, MAX): 
+		if (primes[i] == 0): 
+			primes[i] = 1 
+			j = i * 2 
+			while (j < MAX): 
+				primes[j] -= 1 
+				if ( (primes[j] + 3) == 0): 
+					result.append(j) 
+				j = j + i 
+	result.sort() 
+	return result[n - 1] ","def find_val(n,r): 
+	result = (2**n) - 1
+	return result * result - 2",0.0018366987340053,0.0243243579345099,0.0032939234702982,0.0003593371058507,0.0003952708164357,0.81557697057724,0.7345390915870667,0.7729397416114807,0.7419108748435974
+89,Write a function to find average value of the numbers in a given tuple of tuples.,"def average_tuple(nums):
+    result = [sum(x) / len(x) for x in zip(*nums)]
+    return result","def average_value(test_list):
+  res = sum(map(sum, test_list)) / len(test_list)
+  return (res) / len(test_list) ",0.0221625475730487,0.3066814715431077,0.0083640401329938,0.0092004441462932,0.0102227157181035,0.8486913442611694,0.8041161298751831,0.8258026838302612,0.8083618879318237
+90,Write a function to find m number of multiples of n.,"def multiples_of_num(m,n): 
+    multiples_of_num= list(range(n,(m+1)*n, n)) 
+    return list(multiples_of_num)","def count_multiples(n, m):
+    count = 0
+    for i in range(0, n * m):
+        count += 1
+    if (count % m!= 0):
+        return (count // m + 1) * m
+    else:
+        return ('No result found')",0.0065107552025914,0.0588235294117647,0.003030303030303,0.003125,0.0032258064516129,0.7821757197380066,0.8255256414413452,0.8032662868499756,0.820975661277771
+91,Write a function to find the equilibrium index of the given array.,"def equilibrium_index(arr):
+  total_sum = sum(arr)
+  left_sum=0
+  for i, num in enumerate(arr):
+    total_sum -= num
+    if left_sum == total_sum:
+      return i
+    left_sum += num
+  return -1","def find_equilibum(arr, n):
+  for i in range(0, n, 1):
+    if arr[i] == arr[i - 1]:
+      return i 
+  return -1",0.0271971720034511,0.3454166617224797,0.0810236613916927,0.0042894879560307,0.0045575809532827,0.8643350601196289,0.8175333142280579,0.8402830362319946,0.8219841122627258
+92,Write a python function to check whether the given number can be represented as difference of two squares or not.,"def dif_Square(n): 
+    if (n % 4 != 2): 
+        return True
+    return False","def is_Diff(n):
+    return (n % 2 == 0) ",0.0423682412589593,0.3032653298563167,0.0866472371018047,0.0101088443285438,0.0121306131942526,0.8766071796417236,0.8530251979827881,0.8646553754806519,0.8553261160850525
+93,Write a python function to count hexadecimal numbers for a given range.,"def count_Hexadecimal(L,R) :  
+    count = 0;  
+    for i in range(L,R + 1) : 
+        if (i >= 10 and i <= 15) : 
+            count += 1;  
+        elif (i > 15) : 
+            k = i;  
+            while (k != 0) :  
+                if (k % 16 >= 10) : 
+                    count += 1;  
+                k = k // 16;  
+    return count;  ","def count_hex(n,r): 
+    l = 0
+    r = n - r 
+    while (l <= r): 
+        sum = 0
+        for i in range(r + 1, n + 1): 
+            r = (2 * r + 1) / i 
+        sum = sum + (int(i) + 1) 
+        i += 1
+    return int(sum) ",0.0265466447217994,0.2512509501178934,0.0550099129916505,0.0187441185008587,0.001917012119406,0.8436413407325745,0.8190042972564697,0.8311402797698975,0.8214030861854553
+94,Write a python function to find the sum of fifth power of first n even natural numbers.,"def even_Power_Sum(n): 
+    sum = 0; 
+    for i in range(1,n+1): 
+        j = 2*i; 
+        sum = sum + (j*j*j*j*j); 
+    return sum; ","def odd_Num_Sum(n) : 
+    j = 0
+    sm = 0
+    for i in range(1,n+1) : 
+        j = (2*i-1) 
+        sm = sm + (j*j*j*j*j*j)     
+    return sm ",0.0585645823327536,0.4166666666666667,0.1304347826086956,0.0454545454545454,0.0047619047619047,0.9571908116340637,0.9651318192481995,0.9611449241638184,0.9643317461013794
+95,Write a function to find all anagrams of a string in a given list of strings using lambda function.,"from collections import Counter 
+def anagram_lambda(texts,str):
+  result = list(filter(lambda x: (Counter(str) == Counter(x)), texts)) 
+  return result","def anagram_string(str1):
+    result = list(filter(lambda x: x == ''.join(str1), str1))
+    return result",0.1941225805945736,0.4776875403825261,0.2605568402086506,0.1433062621147578,0.0796145900637543,0.8960006237030029,0.8627849817276001,0.8790791630744934,0.8659952878952026
+96,Write a python function to print negative numbers in a list.,"def neg_nos(list1):
+  for num in list1: 
+    if num < 0: 
+       return num ","def neg_count(list1):
+  neg_count= 0
+  for num in list1: 
+    if num <= 0: 
+       neg_count += 1
+  return neg_count ",0.3118181497809655,0.5294117647058824,0.3125,0.2666666666666666,0.2142857142857142,0.8972104787826538,0.9586929082870483,0.9269332885742188,0.9521682262420654
+97,"Write a function to find eulerian number a(n, m).","def eulerian_num(n, m): 
+	if (m >= n or n == 0): 
+		return 0 
+	if (m == 0): 
+		return 1 
+	return ((n - m) * eulerian_num(n - 1, m - 1) +(m + 1) * eulerian_num(n - 1, m))","def eulerian_number(n, m):
+	if (n < m):
+		return n 
+	dp = [0] * (m + n)
+	for i in range(0, n + 1):
+		dp[i] = dp[i - 1] + 2 * dp[i - 2]
+	return dp[n]",0.0164728034424218,0.3415964748829986,0.0270274133973361,0.0027822337320787,0.002866543845172,0.8441439867019653,0.9007757306098938,0.8715408444404602,0.8947728872299194

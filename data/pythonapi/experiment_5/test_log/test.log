@@ -1,0 +1,33 @@
+Batch: 1/24. First generated code of this batch: ['xml.etree.ElementTree.tostring(element, method="xml")']
+Batch: 2/24. First generated code of this batch: ['socket.shutdown(how)']
+Batch: 3/24. First generated code of this batch: ['base_handler.run(app)']
+Batch: 4/24. First generated code of this batch: ['IMAP4.response(code)']
+Batch: 5/24. First generated code of this batch: ['aifc.writeframes(data)']
+Batch: 6/24. First generated code of this batch: ['fcntl.flock(fd, operation, func, input=None)']
+Batch: 7/24. First generated code of this batch: ["def encode(object, final_value):\r\n    if not final_value:\r\n        return None\r\n    encode_last_char = False\r\n    base_value = ''\r\n    if not isinstance(object, dict):\r\n        base_value = base_value + [encode(object)]\r\n        else:\r\n            base_value = base_value + [encode(object)]\r\n        base_value = base_value + [encode(object)]\r\n    return encode_last_char if final_value else base_value"]
+Batch: 8/24. First generated code of this batch: ['from threading import Lock, timedelta as ct\r\ndef sleep_on_timeout(timeout, time):\r\n  temp = time.time()\r\n  if time.clock() > target:\r\n    if (temp > 0):\r\n      return -1\r\n    else:\r\n      return 0']
+Batch: 9/24. First generated code of this batch: ['text_calendar.formatyear(theyear, w=2, l=1)']
+Batch: 10/24. First generated code of this batch: ['os.posix_fallocate(fd, offset, len)']
+Batch: 11/24. First generated code of this batch: ['pprint.PrettyPrinter(indent=1, stream=None)']
+Batch: 12/24. First generated code of this batch: ['len(s)']
+Batch: 13/24. First generated code of this batch: ['msilib.CreateRecord(count)']
+Batch: 14/24. First generated code of this batch: ['XMLReader.setLocale(locale)']
+Batch: 15/24. First generated code of this batch: ['from collections import deque\r\ndef my_collection(deque):\r\n  res = deque(deque)\r\n  return (res)']
+Batch: 16/24. First generated code of this batch: ['aifc.setpos(pos)']
+Batch: 17/24. First generated code of this batch: ['xml.etree.ElementTree.SubElement(parent, tag, **extra)']
+Batch: 18/24. First generated code of this batch: ['argparse.ArgumentParser(description=None)']
+Batch: 19/24. First generated code of this batch: ['fcntl.lockf(fd, cmd, len=0, start=0, whence=0)']
+Batch: 20/24. First generated code of this batch: ['datetime.combine(date, time, tzinfo=self.tzinfo)']
+Batch: 21/24. First generated code of this batch: ['aifc.writeframes(data)']
+Batch: 22/24. First generated code of this batch: ['test.support.fs_is_case_insensitive(directory)']
+Batch: 23/24. First generated code of this batch: ['int()']
+Batch: 24/24. First generated code of this batch: ['IMAP4.read(size)']
+The average bleu score is: 0.23123022432318435
+The average 1-gram bleu score is: 0.7061459653056626
+The average 2-gram bleu score is: 0.40149950673286616
+The average 3-gram bleu score is: 0.20198090898170395
+The average 4-gram bleu score is: 0.10774443911851814
+The average precision is: 0.9530583955844243
+The average recall is: 0.9777875280380249
+The average F1 is: 0.964359681725502
+The average F3 is: 0.9748987553119659

@@ -1,0 +1,11 @@
+Batch: 1/2. First generated code of this batch: ['def longest_subseq_with_longest_subseq(arr): \r\n\tn = len(arr) \r\n\tlongest_subseq = [1]*n \r\n\tfor i in range (1, n): \r\n\t\tfor j in range(0, i): \r\n\t\t\tif ((arr[i] > arr[j]) and (l == i) or (arr[i] < l[j]): \r\n\t\t\t\tlongest_subseq[i] = longest_subseq[j]+1\r\n\tfor i in range(n):']
+Batch: 2/2. First generated code of this batch: ['def first_duplicate(nums):\r\n    arr_len = len(nums)\r\n    first_duplicate = next((el for el in nums if nums.count(el) > 1),-1)\r\n    return first_duplicate']
+The average bleu score is: 0.13338986945571776
+The average 1-gram bleu score is: 0.33876341764461054
+The average 2-gram bleu score is: 0.16781945449384084
+The average 3-gram bleu score is: 0.12146929993211786
+The average 4-gram bleu score is: 0.08926335564207151
+The average precision is: 0.8679593114220366
+The average recall is: 0.8521205709905041
+The average F1 is: 0.859246087317564
+The average F3 is: 0.8534253993812873

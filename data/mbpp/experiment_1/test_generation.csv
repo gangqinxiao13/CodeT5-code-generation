@@ -1,0 +1,1096 @@
+text,code,generation
+Write a function to find the length of the longest sub-sequence such that elements in the subsequences are consecutive integers.,"def find_longest_conseq_subseq(arr, n): 
+	ans = 0
+	count = 0
+	arr.sort() 
+	v = [] 
+	v.append(arr[0]) 
+	for i in range(1, n): 
+		if (arr[i] != arr[i - 1]): 
+			v.append(arr[i]) 
+	for i in range(len(v)): 
+		if (i > 0 and v[i] == v[i - 1] + 1): 
+			count += 1
+		else: 
+			count = 1
+		ans = max(ans, count) 
+	return ans ","def lcs_of_subseq(arr, n): 
+	n = n 
+	dp = [1 for i in range(n)] 
+	for i in range(n): 
+		for j in range(0, i): 
+			if (arr[i] > arr[j] and
+				dp[i] < dp[j] + 1): 
+				dp[i] = dp[j - 1] + 1
+	return dp[n - 1]"
+Write a python function to find the sum of even numbers at even positions.,"def sum_even_and_even_index(arr,n):  
+    i = 0
+    sum = 0
+    for i in range(0,n,2): 
+        if (arr[i] % 2 == 0) : 
+            sum += arr[i]  
+    return sum","def even_position(n): 
+    return sum(range(i,n+1,2)) "
+Write a function to remove even characters in a string.,"def remove_even(str1):
+ str2 = ''
+ for i in range(1, len(str1) + 1):
+    if(i % 2 != 0):
+        str2 = str2 + str1[i - 1]
+ return str2","def remove_even(str1):
+ str2 = ''
+ for i in range(1, len(str1) + 1):
+    if (i % 2 == 0):
+        str2 = str2 + str1[i - 1]
+ return str2"
+Write a function to calculate the sum of the positive integers of n+(n-2)+(n-4)... (until n-x =< 0).,"def sum_series(n):
+  if n < 1:
+    return 0
+  else:
+    return n + sum_series(n - 2)","def sum_positive_nums(n):
+    ans = 0
+    while n!= 0:
+        n = n // 2
+        ans = ans * (n - 1)
+        return ans   
+def sum_negative(n):
+    n = n // 2
+    sum_positive = 0
+    for i in range(n):
+        if n % 10 == 0:
+            sum_positive += (n - 1) * n
+        else:
+            sum_positive += (n - 1) * n"
+Write a python function to count the pairs with xor as an odd number.,"def find_Odd_Pair(A,N) : 
+    oddPair = 0
+    for i in range(0,N) :  
+        for j in range(i+1,N) :  
+            if ((A[i] ^ A[j]) % 2 != 0):  
+                oddPair+=1  
+    return oddPair  ","def find_even_Pair(A,N): 
+    evenPair = 0
+    for i in range(0,N): 
+        for j in range(0,N): 
+            if ((A[i] ^ A[j]) % 2 == 0): 
+                evenPair+=1
+    return evenPair; "
+Write a function to remove consecutive duplicates of a given list.,"from itertools import groupby
+def consecutive_duplicates(nums):
+    return [key for key, group in groupby(nums)] ","def remove_consecutive_duplicates(l):
+    return [i for i in l if l.count(i)==1]"
+Write a function to compute the value of ncr%p.,"def ncr_modp(n, r, p): 
+    C = [0 for i in range(r+1)]   
+    C[0] = 1
+    for i in range(1, n+1): 
+        for j in range(min(i, r), 0, -1): 
+            C[j] = (C[j] + C[j-1]) % p   
+    return C[r] ","def nCr_p(n, r, p): 
+	if (r > n- r): 
+		r = n - r 
+	C = [0 for i in range(r + 1)] 
+	C[0] = 1 
+	for i in range(1, n + 1): 
+		for j in range(min(i, r), 0, -1): 
+			C[j] = (C[j] + C[j-1]) * (C[j] + C[j-1]) / 6"
+Write a function to check whether the given key is present in the dictionary or not.,"def is_key_present(d,x):
+  if x in d:
+    return True
+  else:
+     return False","def check_key(dict, key):
+  if key in dict:
+    return True
+  else:
+    return False"
+Write a python function to convert the given string to lower case.,"def is_lower(string):
+  return (string.lower())","def is_lower(string):
+  return (string.lower())"
+Write a function to return true if the password is valid.,"import re
+def pass_validity(p):
+ x = True
+ while x:  
+    if (len(p)<6 or len(p)>12):
+        break
+    elif not re.search(""[a-z]"",p):
+        break
+    elif not re.search(""[0-9]"",p):
+        break
+    elif not re.search(""[A-Z]"",p):
+        break
+    elif not re.search(""[$#@]"",p):
+        break
+    elif re.search(""\s"",p):
+        break
+    else:
+        return True
+        x=False
+        break
+
+ if x:
+    return False","def check_password(password):
+  if any(password == password for x in range(10)):
+    return True
+  else:
+    return False"
+Write a function to remove all the words with k length in the given string.,"def remove_length(test_str, K):
+  temp = test_str.split()
+  res = [ele for ele in temp if len(ele) != K]
+  res = ' '.join(res)
+  return (res) ","def remove_words(text, K):
+  words = re.findall('\w+',text)
+  return (words)"
+Write a function to add the given list to the given tuples.,"def add_lists(test_list, test_tup):
+  res = tuple(list(test_tup) + test_list)
+  return (res) ","def add_list(test_list, test_tup):
+  test_list += test_tup
+  return (test_list) "
+Write a function to get the sum of a non-negative integer.,"def sum_digits(n):
+  if n == 0:
+    return 0
+  else:
+    return n % 10 + sum_digits(int(n / 10))","def number_sum(num):
+  sum=0
+  for i in range(num):
+    if i % 2 == 0:
+      sum = sum + i
+  return sum"
+Write a function to insert a given string at the beginning of all items in a list.,"def add_string(list,string):
+ add_string=[string.format(i) for i in  list]
+ return add_string","def insert_string(list,element):
+ list = [element for i in list if i!= element]
+ return list"
+Write a function to find the similar elements from the given two tuple lists.,"def similar_elements(test_tup1, test_tup2):
+  res = tuple(set(test_tup1) & set(test_tup2))
+  return (res) ","def closest(test_list1, test_list2):
+  res = list(set(test_list1) & set(test_list2))
+  return (res) "
+Write a function to check for a number at the end of a string.,"import re
+def end_num(string):
+    text = re.compile(r"".*[0-9]$"")
+    if text.match(string):
+        return True
+    else:
+        return False","def check_num_position(text):
+    n = len(text)
+    for i in range(n):
+        if (text[i] == '\n'):
+            return True
+    return False"
+Write a python function to get the position of rightmost set bit.,"import math
+def get_First_Set_Bit_Pos(n):
+     return math.log2(n&-n)+1","import math 
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    return int(math.log2(n&-n)+1)   
+def get_Pos_Of_Right_most_Set_Bit(n): 
+    if (n == 0): 
+        return 0
+    pos = get_Pos_Of_Right_most_Set_Bit(n)      
+    return pos"
+Write a python function to find the maximum length of sublist.,"def Find_Max_Length(lst):  
+    maxLength = max(len(x) for x in lst )
+    return maxLength ","def max_length_list(lst):
+    max_length = 0
+    for i in lst:
+        max_length = max(len(x) for x in i)
+    return max_length "
+Write a function to zip the two given tuples.,"def zip_tuples(test_tup1, test_tup2):
+  res = []
+  for i, j in enumerate(test_tup1):
+    res.append((j, test_tup2[i % len(test_tup2)])) 
+  return (res) ","def zip_tuple(test_tup1, test_tup2):
+  res = tuple(tuple(a - b for a, b in zip(tup1, tup2))
+   for tup1, tup2 in zip(test_tup1, test_tup2))
+  return (res) "
+Write a function to perform the adjacent element concatenation in the given tuples.,"def concatenate_elements(test_tup):
+  res = tuple(i + j for i, j in zip(test_tup, test_tup[1:]))
+  return (res) ","def adjacent_elements(test_tup1, test_tup2):
+  res = tuple(ele1 + ele2 for ele1, ele2 in zip(test_tup1, test_tup2))
+  return (res) "
+Write a function to find the n-th rectangular number.,"def find_rect_num(n):
+  return n*(n + 1) ","def rectangular_num(n): 
+	if (n == 0): 
+		return 1
+	return rectangular_num(n - 1) + rectangular_num(n - 2)"
+Write a function to count those characters which have vowels as their neighbors in the given string.,"def count_vowels(test_str):
+  res = 0
+  vow_list = ['a', 'e', 'i', 'o', 'u']
+  for idx in range(1, len(test_str) - 1):
+    if test_str[idx] not in vow_list and (test_str[idx - 1] in vow_list or test_str[idx + 1] in vow_list):
+      res += 1
+  if test_str[0] not in vow_list and test_str[1] in vow_list:
+    res += 1
+  if test_str[-1] not in vow_list and test_str[-2] in vow_list:
+    res += 1
+  return (res) ","def Check_Vow(string, vowels):
+    final = [each for each in string if each in vowels]
+    return(len(final)) 
+"
+Write a python function to find the average of odd numbers till a given odd number.,"def average_Odd(n) : 
+    if (n%2==0) : 
+        return (""Invalid Input"") 
+        return -1 
+    sm =0
+    count =0
+    while (n>=1) : 
+        count=count+1
+        sm = sm + n 
+        n = n-2
+    return sm//count ","def odd_Average(n): 
+    odd = 0
+    for i in range(0, n): 
+        if (n % i!= 0): 
+            odd += 1
+    return odd / i "
+Write a function to sort the given array by using shell sort.,"def shell_sort(my_list):
+    gap = len(my_list) // 2
+    while gap > 0:
+        for i in range(gap, len(my_list)):
+            current_item = my_list[i]
+            j = i
+            while j >= gap and my_list[j - gap] > current_item:
+                my_list[j] = my_list[j - gap]
+                j -= gap
+            my_list[j] = current_item
+        gap //= 2
+
+    return my_list","def shell_sort(arr):
+    arr_len = len(arr)
+    while not arr_len:
+        arr_len = len(arr)
+        arr[0] = arr[0]
+        arr_len = len(arr)
+        shift_down(arr, 0, len(arr) - 1)
+        shift_down(arr, 1, len(arr))
+    return arr"
+Write a function to check whether the given month number contains 31 days or not.,"def check_monthnumb_number(monthnum2):
+  if(monthnum2==1 or monthnum2==3 or monthnum2==5 or monthnum2==7 or monthnum2==8 or monthnum2==10 or monthnum2==12):
+    return True
+  else:
+    return False","def check_monthnum_number(monthnum1):
+  if(monthnum1 == 2 or monthnum1 == 3 or monthnum1 == 4 or monthnum2 == 5 or monthnum2 == 6 or monthnum2 == 7):
+    return True
+  else:
+    return False"
+Write a function to check if a binary tree is balanced or not.,"class Node: 
+	def __init__(self, data): 
+		self.data = data 
+		self.left = None
+		self.right = None
+def get_height(root): 
+	if root is None: 
+		return 0
+	return max(get_height(root.left), get_height(root.right)) + 1
+def is_tree_balanced(root): 
+	if root is None: 
+		return True
+	lh = get_height(root.left) 
+	rh = get_height(root.right) 
+	if (abs(lh - rh) <= 1) and is_tree_balanced( 
+	root.left) is True and is_tree_balanced( root.right) is True: 
+		return True
+	return False","class Node: 
+	def is_balanced_tree(self, data): 
+	if (data == None): 
+		return False
+	if (is_balanced): 
+		return True
+	else: 
+		return False"
+Write a function to check whether the given number is undulating or not.,"def is_undulating(n): 
+	if (len(n) <= 2): 
+		return False
+	for i in range(2, len(n)): 
+		if (n[i - 2] != n[i]): 
+			return False
+	return True","def is_undotify(n) : 
+    return False"
+Write a python function to find the sum of the three lowest positive numbers from a given list of numbers.,"def sum_three_smallest_nums(lst):
+	return sum(sorted([x for x in lst if x > 0])[:3])","def third_limit_sum(nums):
+  sum_of_three = list(filter(lambda nums:nums>0,nums))
+  return sum_of_three"
+"Write a function to extract specified number of elements from a given list, which follow each other continuously.","from itertools import groupby 
+def extract_elements(numbers, n):
+    result = [i for i, j in groupby(numbers) if len(list(j)) == n] 
+    return result","def extract_data(list1, n):
+    result = [i for i in list1 if len(list1)!= n]
+    return result"
+Write a python function to split a string into characters.,"def split(word): 
+    return [char for char in word] ","def split(s): 
+    return (ord(s[0]) + 1)  "
+"Write a function to find entringer number e(n, k).","def zigzag(n, k): 
+	if (n == 0 and k == 0): 
+		return 1
+	if (k == 0): 
+		return 0
+	return zigzag(n, k - 1) + zigzag(n - 1, n - k)","def entringer_num(n, k):
+  if (k == 0):
+    return 2
+  else:
+    return 3"
+Write a python function to find the sum of non-repeated elements in a given array.,"def find_Sum(arr,n): 
+    arr.sort() 
+    sum = arr[0] 
+    for i in range(0,n-1): 
+        if (arr[i] != arr[i+1]): 
+            sum = sum + arr[i+1]   
+    return sum","def find_Sum(arr,n): 
+    return sum([x for x in arr if arr.count(x) > 1])"
+Write a function to count total characters in a string.,"def count_charac(str1):
+ total = 0
+ for i in str1:
+    total = total + 1
+ return total","def count_char(str1):
+  count_chars = 0
+  for i in range(len(str1)):
+    if ((i == ord(str1[i]) - ord('a')) or
+      count_chars += 1
+  return count_chars"
+Write a python function to find the volume of a triangular prism.,"def find_Volume(l,b,h) : 
+    return ((l * b * h) / 2) ","def volume_triangle(n,k):
+  volume=(3*n*k)*(3*n*k)
+  return volume"
+Write a function to find the index of the last occurrence of a given number in a sorted array.,"def find_last_occurrence(A, x):
+    (left, right) = (0, len(A) - 1)
+    result = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if x == A[mid]:
+            result = mid
+            left = mid + 1
+        elif x < A[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result ","def find_last_occurrence(A, x):
+    (left, right) = (0, len(A) - 1)
+    result = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if x == A[mid]:
+            result = mid
+            right = mid - 1
+        elif x < A[mid]:
+            right = mid - 1
+        else:
+            left = mid + 1
+    return result"
+Write a function to find the longest chain which can be formed from the given set of pairs.,"class Pair(object): 
+	def __init__(self, a, b): 
+		self.a = a 
+		self.b = b 
+def max_chain_length(arr, n): 
+	max = 0
+	mcl = [1 for i in range(n)] 
+	for i in range(1, n): 
+		for j in range(0, i): 
+			if (arr[i].a > arr[j].b and
+				mcl[i] < mcl[j] + 1): 
+				mcl[i] = mcl[j] + 1
+	for i in range(n): 
+		if (max < mcl[i]): 
+			max = mcl[i] 
+	return max","def chain_pairs(pairs):
+    if len(pairs)>1:
+        return [len(pairs[i]) for i in range(len(pairs))]
+    elif len(pairs)==1:
+        return [[arr[i] for arr in pairs]!= 1]
+    else:
+        return [sorted(pairs[i]) for i in range(len(pairs))]"
+Write a python function to find the highest power of 2 that is less than or equal to n.,"def highest_Power_of_2(n): 
+    res = 0; 
+    for i in range(n, 0, -1): 
+        if ((i & (i - 1)) == 0): 
+            res = i; 
+            break; 
+    return res; ","def highest_Power_of_2(n): 
+    res = 0; 
+    for i in range(n, 0, -1):  
+        if ((i & (i - 1)) == 0): 
+            return i; 
+            break;      
+    return res; "
+Write a python function to find sum of even index binomial coefficients.,"import math  
+def even_binomial_Coeff_Sum( n): 
+    return (1 << (n - 1)) ","def binomial_Coeff(n,k): 
+    C = [0] * (k + 1); 
+    C[0] = 1; # nC0 is 1 
+    for i in range(1,n): 
+        for j in range(0, i): 
+            if (pow(C[i], k) % 2 == 0): 
+                C[i] = C[j] + C[j - 1] 
+            else: 
+                C[j] = C[j - 1] + C[j - 1"
+Write a python function to find smallest power of 2 greater than or equal to n.,"def next_Power_Of_2(n): 
+    count = 0; 
+    if (n and not(n & (n - 1))): 
+        return n   
+    while( n != 0): 
+        n >>= 1
+        count += 1
+    return 1 << count; ","def smallest_Power_of_2(n):
+    res = 0; 
+    for i in range(n, 0, -1):
+        if ((i & (i - 1)) == 0):
+            res = i; 
+            break;      
+    return res; "
+Write a function to count the number of inversions in the given array.,"def get_inv_count(arr, n): 
+	inv_count = 0
+	for i in range(n): 
+		for j in range(i + 1, n): 
+			if (arr[i] > arr[j]): 
+				inv_count += 1
+	return inv_count ","def get_Inv_Count(arr,n):
+    inv_count = 0
+    for i in range(n):
+        if (arr[i] > arr[i - 1]):
+            inv_count += 1
+    return inv_count "
+Write a python function to accept the strings which contains all vowels.,"def check(string): 
+  if len(set(string).intersection(""AEIOUaeiou""))>=5: 
+    return ('accepted') 
+  else: 
+    return (""not accepted"") ","def vowels(string):
+    vowels = set(string.lowercase)
+    for i in range(len(string)):
+        if string[i] in vowels:
+            return True
+    return False"
+Write a function to split a string at uppercase letters.,"import re
+def split_upperstring(text):
+ return (re.findall('[A-Z][^A-Z]*', text))","import re
+def split_list(text):
+ return (re.findall('[A-Z][^A-Z]*', text))"
+Write a function to count the frequency of consecutive duplicate elements in a given list of numbers.,"def count_duplic(lists):
+    element = []
+    frequency = []
+    if not lists:
+        return element
+    running_count = 1
+    for i in range(len(lists)-1):
+        if lists[i] == lists[i+1]:
+            running_count += 1
+        else:
+            frequency.append(running_count)
+            element.append(lists[i])
+            running_count = 1
+    frequency.append(running_count)
+    element.append(lists[i+1])
+    return element,frequency
+","def consecutive_unique_nums(nums):
+    result = 0
+    for i in nums:
+        if i == 1:
+            result = 1
+    return result"
+Write a function to find the largest palindromic number in the given array.,"def is_palindrome(n) : 
+	divisor = 1
+	while (n / divisor >= 10) : 
+		divisor *= 10
+	while (n != 0) : 
+		leading = n // divisor 
+		trailing = n % 10
+		if (leading != trailing) : 
+			return False
+		n = (n % divisor) // 10
+		divisor = divisor // 100
+	return True
+def largest_palindrome(A, n) : 
+	A.sort() 
+	for i in range(n - 1, -1, -1) : 
+		if (is_palindrome(A[i])) : 
+			return A[i] 
+	return -1","def find_max_palindic(arr, n): 
+	n = len(arr) 
+	dp = [0 for i in range(n)] 
+	dp[0] = 1
+	for i in range(n): 
+		dp[i] = dp[i - 1] + 2 * dp[i - 2] 
+	return max(dp)"
+"Write a function to find out, if the given number is abundant.","def is_abundant(n):
+    fctrsum = sum([fctr for fctr in range(1, n) if n % fctr == 0])
+    return fctrsum > n","import math 
+def check_abundant(n): 
+	if (n % 3 == 0): 
+		return True
+	else: 
+		return False"
+Write a function to move all zeroes to the end of the given array.,"def re_order(A):
+    k = 0
+    for i in A:
+        if i:
+            A[k] = i
+            k = k + 1
+    for i in range(k, len(A)):
+        A[i] = 0
+    return A","def move_zero(arr, n):
+    a = [0 for i in range(n)]
+    x = [ i for i in range(n)]
+    if x == 0:
+        x.extend(a)
+    else:
+        x.extend(a[i:])
+    return (x)"
+Write a function to extract the maximum numeric value from a string by using regex.,"import re 
+def extract_max(input): 
+	numbers = re.findall('\d+',input) 
+	numbers = map(int,numbers) 
+	return max(numbers)","import re
+def extract_num(text1):
+  result = re.findall('[0-9]+[.](\d{4})+', text1)
+  return result"
+Write a python function to find the next perfect square greater than a given number.,"import math  
+def next_Perfect_Square(N): 
+    nextN = math.floor(math.sqrt(N)) + 1
+    return nextN * nextN ","def next_Square(n) :
+    for i in range(n):
+        if ((n % i) == 0):
+            return i;
+    return next_Square(n)"
+Write a function to check whether a specified list is sorted or not.,"def issort_list(list1):
+    result = all(list1[i] <= list1[i+1] for i in range(len(list1)-1))
+    return result","def check_sorted(list1, lst):
+    sorted_list = sorted(list1)
+    if sorted_list:
+        return True
+    else:
+        return False"
+Write a python function to find lcm of two positive integers.,"def lcm(x, y):
+   if x > y:
+       z = x
+   else:
+       z = y
+   while(True):
+       if((z % x == 0) and (z % y == 0)):
+           lcm = z
+           break
+       z += 1
+   return lcm","def find_lcm(x, y): 
+    if x % y == 0: 
+        return y 
+    return find_lcm(x, y) "
+Write a function to extract values between quotation marks of a string.,"import re
+def extract_values(text):
+ return (re.findall(r'""(.*?)""', text))","import re
+def extract_quotation(text1):
+  return (re.findall(r'""(.*?)""', text1))"
+Write a function to find the greatest common divisor (gcd) of two integers by using recursion.,"def recur_gcd(a, b):
+	low = min(a, b)
+	high = max(a, b)
+	if low == 0:
+		return high
+	elif low == 1:
+		return 1
+	else:
+		return recur_gcd(low, high%low)","def find_gcd(x,y):
+  if x < y:
+    return y
+  else:
+    return x * y"
+Write a python function to count the number of integral co-ordinates that lie inside a square.,"def count_Intgral_Points(x1,y1,x2,y2): 
+    return ((y2 - y1 - 1) * (x2 - x1 - 1)) ","def count_Solution(n): 
+    res = 1
+    for i in range(1,n): 
+        if (n % i == 0): 
+            return i 
+        res = res * (1 - math.pow(i, 2)) / i 
+    return res "
+Write a function to convert rgb color to hsv color.,"def rgb_to_hsv(r, g, b):
+    r, g, b = r/255.0, g/255.0, b/255.0
+    mx = max(r, g, b)
+    mn = min(r, g, b)
+    df = mx-mn
+    if mx == mn:
+        h = 0
+    elif mx == r:
+        h = (60 * ((g-b)/df) + 360) % 360
+    elif mx == g:
+        h = (60 * ((b-r)/df) + 120) % 360
+    elif mx == b:
+        h = (60 * ((r-g)/df) + 240) % 360
+    if mx == 0:
+        s = 0
+    else:
+        s = (df/mx)*100
+    v = mx*100
+    return h, s, v","def hsv_to_rgb(hsv):
+    if (len(rgb) == 3):
+        return rgb
+    else:
+        return hsv_to_hsv(rgb[0], rgb[1])"
+Write a function to count the number of elements in a list which are within a specific range.,"def count_range_in_list(li, min, max):
+	ctr = 0
+	for x in li:
+		if min <= x <= max:
+			ctr += 1
+	return ctr","def count_Range(list1, m, n):
+    result = 0
+    for x in list1:
+        if (x < m):
+            result+= 1
+    return result"
+Write a python function to find the sum of the largest and smallest value in a given array.,"def big_sum(nums):
+      sum= max(nums)+min(nums)
+      return sum","def largest_sum(nums):
+     return max(nums)  "
+Write a function to multiply two lists using map and lambda function.,"def mul_list(nums1,nums2):
+  result = map(lambda x, y: x * y, nums1, nums2)
+  return list(result)","def multiply_list(nums1,nums2):
+  result = map(lambda x, y: x * y, nums1, nums2)
+  return list(result)"
+Write a python function to find minimum sum of factors of a given number.,"def find_Min_Sum(num): 
+    sum = 0
+    i = 2
+    while(i * i <= num): 
+        while(num % i == 0): 
+            sum += i 
+            num /= i 
+        i += 1
+    sum += num 
+    return sum","import math 
+def min_Sum_Of_Factors(n): 
+    if (n % 2!= 0): 
+        return 0
+    res = 1
+    for i in range(2,n + 1): 
+        fact = 1
+        for j in range(i + 1,n): 
+            fact = fact * i 
+            while (fact % 2 == 0): 
+                break 
+            res *= fact 
+            n >>= 1 
+    return res "
+Write a function to find the nth octagonal number.,"def is_octagonal(n): 
+	return 3 * n * n - 2 * n ","def octagonal_num(n): 
+	return int(n * (7 * n - 5) / 2) "
+Write a function to sort counter by value.,"from collections import Counter
+def sort_counter(dict1):
+ x = Counter(dict1)
+ sort_counter=x.most_common()
+ return sort_counter","def sort_counter(nums):
+    arr_len = len(nums)
+    heap = [0] * (arr_len + 1)
+    heap = [0] * (arr_len + 1)
+    while True:
+        if heapq.heappush(heap, [nums[i] for i in range(heap_len)])
+        else:
+            heapq.heappush(heap, [nums[i] for i in range(heap_len)])
+            i = 0
+    return heap"
+"Write a function to assign with each element, its pair elements from other similar pairs in the given tuple.","def assign_elements(test_list):
+  res = dict()
+  for key, val in test_list:
+    res.setdefault(val, [])
+    res.setdefault(key, []).append(val)
+  return (res) ","def assign_pairs(test_tup):
+  res = [tuple(ele1, ele2) for ele1, ele2 in zip(test_tup1, test_tup2)]
+  res_dict = dict(res_tup)
+  res = [(key, val) for key, val in res_dict.items()]
+  return (res_dict) "
+Write a function to list out the list of given strings individually using map function.,"def listify_list(list1):
+  result = list(map(list,list1)) 
+  return result ","def list_strings(input_list):
+  result = map(lambda x:x.strip(), input_list)
+  return list(result)"
+Write a function to put spaces between words starting with capital letters in a given string by using regex.,"import re
+def capital_words_spaces(str1):
+  return re.sub(r""(\w)([A-Z])"", r""\1 \2"", str1)","import re
+def put_spaces(text):
+  return (re.sub('[a-z]([A-Z])','\\1 ', text))"
+Write a python function to count integers from a given list.,"def count_integer(list1):
+    ctr = 0
+    for i in list1:
+        if isinstance(i, int):
+            ctr = ctr + 1
+    return ctr","def count_nums(nums):
+    count = 0
+    for x in nums:
+        if x == counts:
+            count += 1
+    return count "
+Write a function to find the first duplicate element in a given array of integers.,"def find_first_duplicate(nums):
+    num_set = set()
+    no_duplicate = -1
+
+    for i in range(len(nums)):
+
+        if nums[i] in num_set:
+            return nums[i]
+        else:
+            num_set.add(nums[i])
+
+    return no_duplicate","def first_duplicate(nums):
+    nums_set = set(nums)    
+    result = next((el for el in nums if nums_set.add(el)!= 1),-1) 
+    return result"
+Write a function to find out the maximum sum such that no two chosen numbers are adjacent for the given rectangular grid of dimension 2 x n.,"def max_sum_rectangular_grid(grid, n) : 
+	incl = max(grid[0][0], grid[1][0]) 
+	excl = 0
+	for i in range(1, n) : 
+		excl_new = max(excl, incl) 
+		incl = excl + max(grid[0][i], grid[1][i]) 
+		excl = excl_new 
+	return max(excl, incl)","def max_sum_of_rectangles(n, k): 
+	dp = [0] * (n + 1) 
+	dp[0] = 0
+	dp[1] = 1
+	for i in range(1, k): 
+		for j in range(1, n+1): 
+			if (dp[i] - dp[j]) % k == 0: 
+				dp[i] = dp[j - 1] + dp[i - 2] + dp[j - 1] 
+			if"
+Write a python function to get the first element of each sublist.,"def Extract(lst): 
+    return [item[0] for item in lst] ","def first_element(lst): 
+    return next((x[0] for x in lst),-1) "
+Write a function to remove all elements from a given list present in another list.,"def remove_elements(list1, list2):
+    result = [x for x in list1 if x not in list2]
+    return result","def remove_list(list1, list2):
+    result = [n for n in list1 if n not in list2]
+    return result"
+Write a function to filter a dictionary based on values.,"def dict_filter(dict,n):
+ result = {key:value for (key, value) in dict.items() if value >=n}
+ return result","def filter_dict(test_dict, name):
+  res = {key: test_dict[key] for key in test_dict if not test_dict[key] == name}
+  return  (res)
+"
+Write a python function to check whether a string has atleast one letter and one number.,"def check_String(str): 
+    flag_l = False
+    flag_n = False
+    for i in str: 
+        if i.isalpha(): 
+            flag_l = True  
+        if i.isdigit(): 
+            flag_n = True
+    return flag_l and flag_n ","def check_Length(string) : 
+    return (ord(string[0]) == ord('A')) 
+    and (check_Length(string) == 1) : 
+        return True
+    else : 
+        return False"
+Write a function to find out the minimum no of swaps required for bracket balancing in the given string.,"def swap_count(s):
+	chars = s
+	count_left = 0
+	count_right = 0
+	swap = 0
+	imbalance = 0; 
+	for i in range(len(chars)):
+		if chars[i] == '[':
+			count_left += 1
+			if imbalance > 0:
+				swap += imbalance
+				imbalance -= 1
+		elif chars[i] == ']':
+			count_right += 1
+			imbalance = (count_right - count_left) 
+	return swap","def min_Swaps(str1, str2) : 
+    count = 0
+    for i in range(len(str1)) : 
+        if (str1[i]!= str2[i]) : 
+            count += 1
+    if (count % 2 == 0): 
+        return (count // 2) 
+    else : 
+        return (""Not Possible"") "
+Write a function to find maximum run of uppercase characters in the given string.,"def max_run_uppercase(test_str):
+  cnt = 0
+  res = 0
+  for idx in range(0, len(test_str)):
+    if test_str[idx].isupper():
+      cnt += 1
+    else:
+      res = cnt
+      cnt = 0
+  if test_str[len(test_str) - 1].isupper():
+    res = cnt
+  return (res)","def max_run_of_uppercase(str1):
+	n = len(str1)
+	max_run = -1
+	for i in range(1, n+1):
+		if ((str1[i] == str2[i]) or (str1[i] == str2[i]), -1)):
+			max_run = max(max_run,i)
+	return max_run"
+Write a python function to check whether the value exists in a sequence or not.,"def overlapping(list1,list2):  
+    c=0
+    d=0
+    for i in list1: 
+        c+=1
+    for i in list2: 
+        d+=1
+    for i in range(0,c): 
+        for j in range(0,d): 
+            if(list1[i]==list2[j]): 
+                return 1
+    return 0","def check_value(seq,value): 
+    s = set(seq) 
+    if len(s) == 1: 
+        return True
+    else:
+        return False"
+Write a function to search an element in the given array by using binary search.,"def binary_search(item_list,item):
+	first = 0
+	last = len(item_list)-1
+	found = False
+	while( first<=last and not found):
+		mid = (first + last)//2
+		if item_list[mid] == item :
+			found = True
+		else:
+			if item < item_list[mid]:
+				last = mid - 1
+			else:
+				first = mid + 1	
+	return found","def binary_search(arr, x):
+    binary_search = binary_search(arr, 0, len(arr) - 1)
+    return binary_search(arr, binary_search, len(arr))"
+Write a python function to find number of elements with odd factors in a given range.,"def count_Odd_Squares(n,m): 
+    return int(m**0.5) - int((n-1)**0.5) ","def count_odd_Factors(n,l,r): 
+    res = 1
+    for i in range(2,n + 1): 
+        arr = [i for i in range(r, 0, -1) if (arr[i] % 2!= 0) \
+        if (arr[i] == 1 and arr[i] % 2 == 0): 
+            res = res + 1
+    return res "
+Write a python function to find the sum of fourth power of first n odd natural numbers.,"def odd_Num_Sum(n) : 
+    j = 0
+    sm = 0
+    for i in range(1,n + 1) : 
+        j = (2*i-1) 
+        sm = sm + (j*j*j*j)   
+    return sm ","def even_Power_Sum(n): 
+    sum = 0; 
+    for i in range(1,n + 1): 
+        j = 2*i; 
+        sum = sum + (j*j*j*j); 
+    return sum; "
+Write a python function to find the maximum of two numbers.,"def maximum(a,b):   
+    if a >= b: 
+        return a 
+    else: 
+        return b ","def max_of_two( x, y ):
+    if x > y:
+        return x
+    return y"
+Write a function to sort a list in a dictionary.,"def sorted_dict(dict1):
+  sorted_dict = {x: sorted(y) for x, y in dict1.items()}
+  return sorted_dict","def sort_dict(d):
+  sorted_dict = sorted(d.items(), key = lambda x: x[1])
+  return sorted_dict"
+Write a python function to reverse only the vowels of a given string.,"def reverse_vowels(str1):
+	vowels = """"
+	for char in str1:
+		if char in ""aeiouAEIOU"":
+			vowels += char
+	result_string = """"
+	for char in str1:
+		if char in ""aeiouAEIOU"":
+			result_string += vowels[-1]
+			vowels = vowels[:-1]
+		else:
+			result_string += char
+	return result_string","def reverse_Vow(string):
+  return (string[::-1] if string[::-1] == 'Vow' else string[::-1])"
+Write a python function to find the average of even numbers till a given even number.,"def average_Even(n) : 
+    if (n% 2!= 0) : 
+        return (""Invalid Input"") 
+        return -1  
+    sm = 0
+    count = 0
+    while (n>= 2) : 
+        count = count+1
+        sm = sm+n 
+        n = n-2
+    return sm // count ","def even_num(n): 
+    count = 0
+    for i in range(1, n + 1): 
+        if (i % 2 == 0): 
+            count+=1 
+        else: 
+            count+=1 
+    return count  "
+Write a function to check if a nested list is a subset of another nested list.,"def check_subset(list1,list2): 
+    return all(map(list1.__contains__,list2)) ","def check_subset_list(list1, list2): 
+    l1, l2 = list1[0], list2[0] 
+    exist = True
+    for i in list2: 
+        if i not in list1: 
+            exist = False
+    return exist "
+Write a function to find the next smallest palindrome of a specified number.,"import sys
+def next_smallest_palindrome(num):
+    numstr = str(num)
+    for i in range(num+1,sys.maxsize):
+        if str(i) == str(i)[::-1]:
+            return i","def next_palindrome(num):
+    for x in range(num-1,0,-1):
+        if str(x) == str(x)[::-1]:
+            return x"
+Write a function to find the volume of a cuboid.,"def volume_cuboid(l,w,h):
+  volume=l*w*h
+  return volume","def volume_cuboid(l,n):
+  volume = l * l * l
+  return volume"
+Write a function to get the frequency of the elements in a list.,"import collections
+def freq_count(list1):
+  freq_count= collections.Counter(list1)
+  return freq_count","from collections import defaultdict
+def freq_element(test_tup):
+  res = defaultdict(int)
+  for ele in test_tup:
+    res[ele] += 1
+  return (str(dict(res))) "
+Write a function to remove uppercase substrings from a given string by using regex.,"import re
+def remove_uppercase(str1):
+  remove_upper = lambda text: re.sub('[A-Z]', '', text)
+  result =  remove_upper(str1)
+  return (result)","import re
+def remove_uppercase(str1):
+ remove_upper = lambda text: re.sub('[A-Z]', '', text)
+ result =  remove_upper(str1)
+  return (result)"
+Write a python function to count unset bits of a given number.,"def count_unset_bits(n): 
+    count = 0
+    x = 1
+    while(x < n + 1): 
+        if ((x & n) == 0): 
+            count += 1
+        x = x << 1
+    return count  ","def count_Unset_Bits(n):  
+    count = 0
+    while (n): 
+        count += 1
+        n >>= 1
+    return count "
+Write a function to decode a run-length encoded given list.,"def decode_list(alist):
+    def aux(g):
+        if isinstance(g, list):
+            return [(g[1], range(g[0]))]
+        else:
+            return [(g, [0])]
+    return [x for g in alist for x, R in aux(g) for i in R]","def decode_list(list1):
+    return [len(x) for x in list1]"
+Write a python function to convert decimal number to octal number.,"def decimal_to_Octal(deciNum):
+    octalNum = 0
+    countval = 1;
+    dNo = deciNum;
+    while (deciNum!= 0):
+        remainder= deciNum % 8;
+        octalNum+= remainder*countval;
+        countval= countval*10;
+        deciNum //= 8; 
+    return (octalNum)","def octal_To_Decimal(n):  
+    num = n; 
+    dec_value = 0; 
+    base = 1; 
+    temp = num; 
+    while (temp): 
+        last_digit = temp % 10; 
+        temp = int(temp / 10); 
+        dec_value += last_digit*base; 
+        base = base * 8; 
+    return dec_value; "
+Write a function to find n’th smart number.,"MAX = 3000 
+def smartNumber(n): 
+	primes = [0] * MAX 
+	result = [] 
+	for i in range(2, MAX): 
+		if (primes[i] == 0): 
+			primes[i] = 1 
+			j = i * 2 
+			while (j < MAX): 
+				primes[j] -= 1 
+				if ( (primes[j] + 3) == 0): 
+					result.append(j) 
+				j = j + i 
+	result.sort() 
+	return result[n - 1] ","def find_snake(n): 
+	snake = [[0 for i in range(n)] for j in range(n)] 
+	snake[0][0] = 1
+	for i in range(1, n+1): 
+		snake[i] = deci_value(snake[i - 1][0], i - 1) 
+	return (snake[n - 1] - s[n]) "
+Write a function to find average value of the numbers in a given tuple of tuples.,"def average_tuple(nums):
+    result = [sum(x) / len(x) for x in zip(*nums)]
+    return result","def find_average(test_list):
+  res = sum(map(lambda x: x[1] / x[0], test_list))
+  return (res) "
+Write a function to find m number of multiples of n.,"def multiples_of_num(m,n): 
+    multiples_of_num= list(range(n,(m+1)*n, n)) 
+    return list(multiples_of_num)","def multi_ples(n):
+	dp = [0]*(n + 1) 
+	dp[0] = 1
+	for i in range(1, n+1):
+		dp[i] = dp[i - 1] + 1
+	return dp[n]"
+Write a function to find the equilibrium index of the given array.,"def equilibrium_index(arr):
+  total_sum = sum(arr)
+  left_sum=0
+  for i, num in enumerate(arr):
+    total_sum -= num
+    if left_sum == total_sum:
+      return i
+    left_sum += num
+  return -1","def find_equilib(array, n):
+  for i in range(n):
+    if (array[i] == arr[i]):
+      return i"
+Write a python function to check whether the given number can be represented as difference of two squares or not.,"def dif_Square(n): 
+    if (n % 4 != 2): 
+        return True
+    return False","def is_Diff(n): 
+    i = 1
+    while i*i <= n : 
+        j = 1
+        while (j*j <= n) : 
+            if (i*i+j*j == n) : 
+                return True
+            j = j+1
+        i = i+1     
+    return False"
+Write a python function to count hexadecimal numbers for a given range.,"def count_Hexadecimal(L,R) :  
+    count = 0;  
+    for i in range(L,R + 1) : 
+        if (i >= 10 and i <= 15) : 
+            count += 1;  
+        elif (i > 15) : 
+            k = i;  
+            while (k != 0) :  
+                if (k % 16 >= 10) : 
+                    count += 1;  
+                k = k // 16;  
+    return count;  ","def hex_range(r,l):
+    return int(r * (l - 1) / (l - 1)) "
+Write a python function to find the sum of fifth power of first n even natural numbers.,"def even_Power_Sum(n): 
+    sum = 0; 
+    for i in range(1,n+1): 
+        j = 2*i; 
+        sum = sum + (j*j*j*j*j); 
+    return sum; ","def odd_Num_Sum(n) : 
+    j = 0
+    sm = 0
+    for i in range(1,n+1) : 
+        j = (2*i-1) 
+        sm = sm + (j*j*j*j*j)     
+    return sm "
+Write a function to find all anagrams of a string in a given list of strings using lambda function.,"from collections import Counter 
+def anagram_lambda(texts,str):
+  result = list(filter(lambda x: (Counter(str) == Counter(x)), texts)) 
+  return result","def anagram_string(nums):
+  result = list(filter(lambda x: x =='string', nums))
+  return result"
+Write a python function to print negative numbers in a list.,"def neg_nos(list1):
+  for num in list1: 
+    if num < 0: 
+       return num ","def neg_count(list):
+  neg_count= 0
+  for num in list: 
+    if num <= 0: 
+      neg_count += 1
+  return neg_count "
+"Write a function to find eulerian number a(n, m).","def eulerian_num(n, m): 
+	if (m >= n or n == 0): 
+		return 0 
+	if (m == 0): 
+		return 1 
+	return ((n - m) * eulerian_num(n - 1, m - 1) +(m + 1) * eulerian_num(n - 1, m))","def eulerian_number(n, m): 
+	if (n == 0): 
+		return 1
+	return (2 * m + 1) / (n - 1) "
