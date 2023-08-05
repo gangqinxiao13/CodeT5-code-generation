@@ -20,9 +20,13 @@ Here is how to use this application:
 ```
 git clone https://github.com/gangqinxiao13/CodeT5-code-generation.git
 ```
-2. Download the model files into "final_model" folder from [here](https://huggingface.co/gangqinxiao13/fine-tuned-codet5).
+2. Use this command to install requirements
+```
+pip install -r requirements.txt
+```
+3. Download the model files into "final_model" folder from [here](https://huggingface.co/gangqinxiao13/fine-tuned-codet5).
 ![](static/model_file_readme.png)
-3. Run the app.py
+4. Run the app.py
 ```
 python app.py
 ```
@@ -37,3 +41,9 @@ The CodeT5 model was pretrained on CodeSearchNet [Husain et al., 2019](https://a
 
 The fine-tuned model was trained on conala-mined [Yin et al., 2019](https://arxiv.org/abs/1805.08949), Re-sampled Python3.7 API Knowledge [Xu et al., 2020](https://arxiv.org/abs/2004.09015) and MBPP (Mostly Basic Python Programming) [Austin et al., 2021](https://arxiv.org/abs/2108.07732)
 All the data is released in "data" folder.
+
+## Fine-tuning process
+
+You can have a look at the "Finetune_Train.py" to check the code for training process.
+This project performs 5 experiments for determining which hyperparameter and the length of input sequence are the best.
+The model has the best performance is released on [here](https://huggingface.co/gangqinxiao13/fine-tuned-codet5).
