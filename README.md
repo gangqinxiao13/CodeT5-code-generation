@@ -31,6 +31,7 @@ pip install -r requirements.txt
 python app.py
 ```
 You'll get a link http://127.0.0.1:5000. You'd better use Chrome to open it, then you can use the application.
+As the CodeT5 is a multitasking model, it can generate code from different data source. You can change the code source in the drop-down box to generate similar code from different data source to get the most suitable code snippet for you.
 ![](static/python_code_generator.png)
 
 ## Pre-training data
