@@ -34,6 +34,19 @@ You'll get a link http://127.0.0.1:5000. You'd better use Chrome to open it, the
 As the CodeT5 is a multitasking model, it can generate code from different data source. You can change the code source in the drop-down box to generate similar code from different data source to get the most suitable code snippet for you.
 ![](static/python_code_generator.png)
 
+### Plot loss curve
+
+You can plot a loss curve from any "train.log" file. Just by simply running
+```
+python Loss_curve.py --log_file <"train.log" file path> 
+```
+The default path is model/conala_fine-tune/train_log/train_1e-4.log.
+
+For example, you can plot another one:
+```
+python Loss_curve.py --log_file model/conala_fine-tune/train_log/train_3e-4.log
+```
+
 ## Pre-training data
 
 The CodeT5 model was pretrained on CodeSearchNet [Husain et al., 2019](https://arxiv.org/abs/1909.09436). Additionally, the authors [Wang et al, 2021](https://arxiv.org/abs/2109.00859) collected two datasets of C/CSharp from [BigQuery1](https://console.cloud.google.com/marketplace/details/github/github-repos) to ensure that all downstream tasks have overlapped programming languages with the pre-training data. In total, around 8.35 million instances are used for pretraining.
