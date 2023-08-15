@@ -1,0 +1,33 @@
+User Feedback Questionnaire: Fine-Tuned CodeT5 Model
+
+Thank you for participating in this feedback survey. Your input is valuable in helping improve fine-tuned CodeT5 model for generating Python code from English. Please take a few minutes to answer the following questions:
+
+Programming Experience: [Select your level of programming experience]
+1.Beginner
+2.Intermediate
+3.Advanced
+Have you used the fine-tuned CodeT5 model for generating Python code from English text?
+1.Yes
+2. No
+If yes, please rate your overall satisfaction with the generated code on a scale of 1 to 5, with 1 being "Very Dissatisfied" and 5 being "Very Satisfied."
+[1][2] [3] [4] [5]
+In your experience, how accurate and relevant is the generated Python code to the provided English text?
+1.Extremely Accurate
+2.Very Accurate
+3.Moderately Accurate
+4.Slightly Accurate
+5.Not Accurate
+How easy was it to use the fine-tuned CodeT5 model for your code generation tasks?
+1.Very Easy
+2.Easy
+3.Neutral
+4.Difficult
+5.Very Difficult
+Did you find the generated code helpful and relevant to your programming needs?
+1.Yes, always
+2.Yes, often
+3.Sometimes
+4.Rarely
+5.No, not at all
+
+Thank you for your feedback! Your input is invaluable in helping us enhance our fine-tuned CodeT5 model.
