@@ -19,6 +19,7 @@ tokenizer = RobertaTokenizer.from_pretrained(model_path)
 model = model.to(device)
 model.eval()
 
+
 def generation(task_prefix, input):
     input = tokenizer(
         [task_prefix + input],
@@ -27,7 +28,6 @@ def generation(task_prefix, input):
         max_length=512,
         truncation=True
     )
-
     outputs = model.generate(
         input_ids=input['input_ids'],
         attention_mask=input["attention_mask"],
@@ -36,6 +36,7 @@ def generation(task_prefix, input):
         )
     generated_code = tokenizer.batch_decode(outputs, skip_special_tokens=True)
     return generated_code[0]
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -58,6 +59,7 @@ def index():
             return render_template('index.html', input_textarea_content=text, textarea_content=generated_code)
 
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
